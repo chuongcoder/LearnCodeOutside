@@ -1,0 +1,1090 @@
+import java.io.*;
+import java.util.*;
+
+//Bai 1
+/*
+public class bai_10 {
+    public static boolean nt(int n){
+        for(int i=2;i<=Math.sqrt(n);i++){
+            if(n%i==0){
+                return false;
+            }
+        }
+        return n>1;
+    }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int m = sc.nextInt();
+        int a[][] = new int[n][m];
+        for(int i=0;i<n;i++){
+            for(int j=0;j<m;j++){
+                a[i][j]=sc.nextInt();
+            }
+        }
+        for(int i=0;i<n;i++){
+            for(int j=0;j<m;j++){
+                if(nt(a[i][j])){
+                    System.out.print(a[i][j]+ " ");
+                }
+            }
+            System.out.println("");
+        }
+    }
+}
+*/
+
+//Bai 2
+/*
+public class bai_10{
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int m = sc.nextInt();
+        int a[][] = new int[n][m];
+        for(int i=0;i<n;i++){
+            for(int j=0;j<m;j++){
+                a[i][j] = sc.nextInt();
+            }
+        }
+        for(int i=0;i<n;i++){
+            long sumh =0;
+            for(int j=0;j<m;j++){
+                sumh += (long)a[i][j];
+            }
+            System.out.print(sumh+" ");
+        }
+        System.out.println("");
+        for(int i=0;i<m;i++){
+            long sumc = 0;
+            for(int j=0;j<n;j++){
+                sumc+=(long)a[j][i];
+            }
+            System.out.print(sumc+ " ");
+        }
+    }
+}
+*/
+
+//Bai 3
+/*
+public class bai_10{
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int m = sc.nextInt();
+        int a[][] = new int[n][m];
+        int minn = (int)1e9;
+        int maxn = (int)-1e9;
+        for(int i=0;i<n;i++){
+            for(int j=0;j<m;j++){
+                a[i][j] = sc.nextInt();
+                minn = Math.min(minn,a[i][j]);
+                maxn = Math.max(maxn,a[i][j]);
+            }
+        }
+        System.out.println(minn);
+        for(int i=0;i<n;i++){
+            for(int j=0;j<m;j++){
+                if(a[i][j]==minn){
+                    System.out.println((int)(i+1)+" "+(int)(j+1));
+                }
+            }
+        }
+        System.out.println(maxn);
+        for(int i=0;i<n;i++){
+            for(int j=0;j<m;j++){
+                if(a[i][j]==maxn){
+                    System.out.println((int)(i+1)+" "+(int)(j+1));
+                }
+            }
+        }  
+    }
+}
+*/
+
+//Bai 4
+/*
+public class bai_10{
+    public static boolean tn(int n){
+        String tmp = String.valueOf(n);
+        for(int i=0;i<tmp.length();i++){
+            if(tmp.charAt(i)!=tmp.charAt(tmp.length()-i-1)){
+                return false;
+            }
+        }
+        return true;
+    }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int a[][] = new int[n][n];
+        for(int i=0;i<n;i++){
+            for(int j=0;j<n;j++){
+                a[i][j] = sc.nextInt();
+            }
+        }
+        int cnt=0;
+        for(int i=0;i<n;i++){
+            for(int j=0;j<=i;j++){
+                if(tn(a[i][j]))
+                    cnt++;
+            }
+        }
+        System.out.println(cnt);
+    }
+}
+*/
+
+
+//Bai 5
+/*
+public class bai_10{
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int a[][] = new int[n][n];
+        for(int i=0;i<n;i++){
+            for(int j=0;j<n;j++){
+                a[i][j] = sc.nextInt();
+            }
+        }
+        System.out.println("Pattern 1:");
+        for(int i=0;i<n;i++){
+            for(int j=0;j<n;j++){
+                System.out.print(a[j][i]+" ");
+            }
+            System.out.println("");
+        }
+        System.out.println("Pattern 2:");
+        for(int i=n-1;i>=0;i--){
+            for(int j=n-1;j>=0;j--){
+                System.out.print(a[i][j]+" ");
+            }
+            System.out.println("");
+        }
+        System.out.println("Pattern 3:");
+        for(int i=n-1;i>=0;i--){
+            for(int j=0;j<n;j++){
+                System.out.print(a[j][i]+" ");
+            }
+            System.out.println("");
+        }
+        System.out.println("Pattern 4:");
+        for(int i=0;i<n;i++){
+            for(int j=n-1;j>=0;j--){
+                System.out.print(a[i][j]+" ");
+            }
+            System.out.println("");
+        }
+    }
+}
+*/
+
+
+//Bai 6
+/*
+public class bai_10{
+    public static void main(String[] args) {
+        Scanner sc  = new Scanner(System.in);
+        int n = sc.nextInt();
+        int a[][] = new int[n][n];
+        for(int i=0;i<n;i++){
+            for(int j=0;j<n;j++){
+                a[i][j] = sc.nextInt();
+            }
+        }
+        for(int i=0;i<n;i++){
+            int tmp = a[i][i];
+            a[i][i] = a[i][n-i-1];
+            a[i][n-i-1] = tmp;
+        }
+        for(int i=0;i<n;i++){
+            for(int j=0;j<n;j++){
+                System.out.print(a[i][j]+" ");
+                
+            }
+            System.out.println("");
+        }
+    }
+}
+*/
+
+
+//Bai 7
+/*
+public class bai_10{
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int a[][] = new int[n][n];
+        for(int i=0;i<n;i++){
+            for(int j=0;j<n;j++){
+                a[i][j] = sc.nextInt();
+            }
+        }
+        int u = sc.nextInt();
+        int v = sc.nextInt();
+        u--;v--;
+        for(int i=0;i<n;i++){
+            int tmp = a[u][i];
+            a[u][i] = a[v][i];
+            a[v][i] = tmp;
+        }
+        for(int i=0;i<n;i++){
+            for(int j=0;j<n;j++){
+                System.out.print(a[i][j]+" ");
+            }
+            System.out.println("");
+        }
+    }
+}
+*/
+
+
+//Bai 8
+/*
+public class bai_10{
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int a[][] = new int[n][n];
+        for(int i=0;i<n;i++){
+            for(int j=0;j<n;j++){
+                a[i][j] = sc.nextInt();
+            }
+        }
+        int u = sc.nextInt();
+        int v = sc.nextInt();
+        u--;v--;
+        for(int i=0;i<n;i++){
+            int tmp = a[i][u];
+            a[i][u] = a[i][v];
+            a[i][v] = tmp;
+        }
+        for(int i=0;i<n;i++){
+            for(int j=0;j<n;j++){
+                System.out.print(a[i][j]+" ");
+            }
+            System.out.println("");
+        }
+    }
+}
+*/
+
+
+//Bai 9
+/*
+public class bai_10{
+    public static boolean nt(int n){
+        for(int i=2;i<=Math.sqrt(n);i++){
+            if(n%i==0)
+                return false;
+        }
+        return n>1;
+    }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int a[][] = new int[n][n];
+        for(int i=0;i<n;i++){
+            for(int j=0;j<n;j++){
+                a[i][j] = sc.nextInt();
+            }
+        }
+        int cnt=0;
+        for(int i=0;i<n;i++){
+            for(int j=0;j<n;j++){
+                if(j==i||j==n-i-1){
+                    if(nt(a[i][j]))
+                        cnt++;
+                }
+            }
+        }
+        System.out.println(cnt);
+    }
+}
+*/
+
+
+//Bai 10
+/*
+public class bai_10{
+    public static boolean nt(int n){
+        for(int i=2;i<=Math.sqrt(n);i++){
+            if(n%i==0)
+                return false;
+        }
+        return n>1;
+    }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n  = sc.nextInt();
+        int a[][] = new int[n][n];
+        HashSet<Integer>set = new HashSet<>();
+        for(int i=0;i<n;i++){
+            for(int j=0;j<n;j++){
+                a[i][j] = sc.nextInt();
+                if((i==j||j==n-i-1)&&nt(a[i][j]))
+                    set.add(a[i][j]);
+            }
+        }
+        System.out.println(set.size());
+    }
+}
+*/
+
+
+//Bai 11
+/*
+public class bai_10{
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int a[][] = new int[n][n];
+        for(int i=0;i<n;i++){
+            for(int j=0;j<n;j++){
+                a[i][j] = sc.nextInt();
+            }
+        }
+        for(int i=0;i<n;i++){
+            for(int j=0;j<n;j++){
+                for(int k=j+1;k<n;k++){
+                    if(a[i][j]>a[i][k]){
+                        int tmp = a[i][j];
+                        a[i][j] = a[i][k];
+                        a[i][k] = tmp;
+                    }
+                }
+            }
+        }
+        for(int i=0;i<n;i++){
+            for(int j=0;j<n;j++){
+                System.out.print(a[i][j]+" ");
+                
+            }
+            System.out.println("");
+        }
+    }
+}
+*/
+
+
+//Bai 12
+/*
+public class bai_10{
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int a[][] = new int[n][n];
+        for(int i=0;i<n;i++){
+            for(int j=0;j<n;j++){
+                a[i][j] = sc.nextInt();
+            }
+        }
+        for(int i=0;i<n;i++){
+            for(int j=0;j<n;j++){
+                for(int k=j+1;k<n;k++){
+                    if(a[j][i]>a[k][i]){
+                        int tmp = a[j][i];
+                        a[j][i] = a[k][i];
+                        a[k][i] = tmp;
+                    }
+                }
+            }
+        }
+        for(int i=0;i<n;i++){
+            for(int j=0;j<n;j++){
+                System.out.print(a[i][j]+" ");
+                
+            }
+            System.out.println("");
+        }
+    }
+}
+*/
+
+
+//Bai 13
+/*
+public class bai_10{
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int m  = sc.nextInt();
+        int p = sc.nextInt();
+        long a[][] = new long[n][m];
+        long b[][] = new long[m][p];
+        long c[][] = new long[n][p];
+        for(int i=0;i<n;i++){
+            for(int j=0;j<m;j++){
+                a[i][j] = sc.nextInt();
+            }
+        }
+        for(int i=0;i<m;i++){
+            for(int j=0;j<p;j++){
+                b[i][j] = sc.nextInt();
+            }
+        }
+        for(int i=0;i<n;i++){
+            for(int j=0;j<p;j++){
+                c[i][j] = (long)0;
+                for(int k = 0;k<m;k++){
+                    c[i][j]+= (long)a[i][k]*b[k][j];
+                }
+            }
+        }
+        for(int i=0;i<n;i++){
+            for(int j=0;j<p;j++){
+                System.out.print(c[i][j]+" ");
+                
+            }
+            System.out.println("");
+        }
+    }
+}
+*/
+
+
+//Bai 14
+/*
+public class bai_10{
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int cnt = 1;
+        int a[][] = new int[n][n];
+        int i1= (int)0,i2 = n -1, j1= (int)0 ,j2=n-1;
+        while(i1<=i2 && j1<=j2){
+            for(int i = j1;i<= j2;i++){
+                a[i1][i] = cnt;
+                cnt++; 
+            }
+            i1++;
+            for(int i = i1 ;i<=i2;i++){
+                a[i][j2] = cnt;
+                cnt++; 
+            }
+            j2--;
+            for(int i = j2;i>=j1;i--){
+                a[i2][i] = cnt;
+                cnt++; 
+            }
+            i2--;
+            for(int i = i2;i>=i1;i--){
+                a[i][j1] = cnt;
+                cnt++; 
+            }
+            j1++;
+        }
+        for(int i=0;i<n;i++){
+            for(int j=0;j<n;j++){
+                System.out.print(a[i][j]+" ");
+            }
+            System.out.println("");
+        }
+                
+    }
+}
+*/
+
+
+//Bai 15
+/*
+public class bai_10{
+    public static void fb(long fibo[]){
+        fibo[0] = 0;
+        fibo[1] = 1;
+        for(int i=2;i<=82;i++){
+            fibo[i] = fibo[i-1]+fibo[i-2];
+        }
+    }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        long fibo[] = new long[83];
+        fb(fibo);
+        long a[][] = new long[n][n];
+        int i1 = 0, i2 = n-1 , j1=0, j2 = n-1;
+        int cnt = 0;
+        while(i1<=i2 && j1<=j2){
+            for(int i = j1;i <= j2;i++){
+                a[i1][i] = fibo[cnt];
+                cnt++;
+            }
+            i1++;
+            for(int i = i1; i<=i2;i++){
+                a[i][j2] = fibo[cnt];
+                cnt++;
+            }
+            j2--;
+            for(int i = j2;i >= j1;i--){
+                a[i2][i] = fibo[cnt];
+                cnt++;
+            }
+            i2--;
+            for(int i = i2;i>=i1;i--){
+                a[i][j1] = fibo[cnt];
+                cnt++;
+            }
+            j1++;
+        }
+        for(int i=0;i<n;i++){
+            for(int j = 0;j<n;j++){
+                System.out.print(a[i][j]+" ");
+            }
+            System.out.println("");
+        }
+    }
+}
+*/
+
+
+//Bai 16
+/*
+public class bai_10{
+    public static int dx[] = {-1,0,1,0};
+    public static int dy[] = {0,1,0,-1};
+    
+    public static boolean visited[][] = new boolean[50][50];
+    public static void dfs(int i,int j,int n,int m){
+        visited[i][j] = true;
+        for(int k=0;k<4;k++){
+            int i1 = i + dx[k];
+            int j1 = j + dy[k];
+            if(i1<n&&i1>=0&&j1<m&&j1>=0&&!visited[i1][j1]){
+                dfs(i1,j1,n,m);
+            }
+        }
+    }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int m = sc.nextInt();
+        int a[][] = new int[n][m];
+        for(int i=0;i<n;i++){
+            for(int j=0;j<m;j++){
+                a[i][j] = sc.nextInt();
+                if(a[i][j] == 0){
+                    visited[i][j] = true;
+                }
+            }
+        }
+        int cnt=0;
+        for(int i=0;i<n;i++){
+            for(int j=0;j<m;j++){
+                if(!visited[i][j]){
+                    cnt++;
+                    dfs(i,j,n,m);
+                }
+            }
+        }
+        System.out.println(cnt);
+    }
+}
+*/
+
+
+//Bai 17
+/*
+public class bai_10{
+    public static int dx[] = {-1,-1,-1,0,1,1,1,0};
+    public static int dy[] = {-1,0,1,1,1,0,-1,-1};
+    
+    public static boolean visited[][] = new boolean[50][50];
+    public static void dfs(int i,int j,int n,int m){
+        visited[i][j] = true;
+        for(int k=0;k<8;k++){
+            int i1 = i + dx[k];
+            int j1 = j + dy[k];
+            if(i1<n&&i1>=0&&j1<m&&j1>=0&&!visited[i1][j1]){
+                dfs(i1,j1,n,m);
+            }
+        }
+    }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int m = sc.nextInt();
+        int a[][] = new int[n][m];
+        for(int i=0;i<n;i++){
+            for(int j=0;j<m;j++){
+                a[i][j] = sc.nextInt();
+                if(a[i][j] == 0){
+                    visited[i][j] = true;
+                }
+            }
+        }
+        int cnt=0;
+        for(int i=0;i<n;i++){
+            for(int j=0;j<m;j++){
+                if(!visited[i][j]){
+                    cnt++;
+                    dfs(i,j,n,m);
+                }
+            }
+        }
+        System.out.println(cnt);
+    }
+}
+*/
+
+
+//Bai 18
+/*
+public class bai_10{
+    public static int dx[] = {-1,-1,-1,0,1,1,1,0};
+    public static int dy[] = {-1,0,1,1,1,0,-1,-1};
+    public static boolean check(int a[][], int i, int j, int n, int m){
+        for(int k=0;k<8;k++){
+            int i1 = i+dx[k];
+            int j1 = j+dy[k];
+            if(i1>=0&&i1<n&&j1>=0&&j1<m){
+                if(a[i][j]<=a[i1][j1])
+                    return false;
+            }
+        }
+        return true;
+    }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int m = sc.nextInt();
+        int a[][] = new int[n][m];
+        for(int i=0;i<n;i++){
+            for(int j=0;j<m;j++){
+                a[i][j] = sc.nextInt();
+            }
+        }
+        int cnt=0;
+        for(int i=0;i<n;i++){
+            for(int j=0;j<m;j++){
+                if(check(a,i,j,n,m))
+                    cnt++;
+            }
+        }
+        System.out.println(cnt);
+    }
+}
+*/
+
+
+//Bai 19
+/*
+public class bai_10{
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int m = sc.nextInt();
+        long a[][] = new long[n+2][m+2];
+        for(int i=1;i<=n;i++){
+            for(int j=1;j<=m;j++){
+                a[i][j] = sc.nextInt();
+            }
+        }
+        for(int i=1;i<=n;i++){
+            for(int j=1;j<=m;j++){
+                a[i][j] += Math.max(a[i-1][j],a[i][j-1]);
+            }
+        }
+        System.out.println(a[n][m]);
+    }
+}
+*/
+
+
+//Bai 20
+/*
+public class bai_10{
+    public static int dx[] = {-1,0,1,0};
+    public static int dy[] = {0,1,0,-1};
+    
+    public static boolean visited[][] = new boolean[100][100];
+    public static void dfs(int i,int j,int n,int m){
+        visited[i][j] = true;
+        for(int k=0;k<4;k++){
+            int i1 = i + dx[k];
+            int j1 = j + dy[k];
+            if(i1<n&&i1>=0&&j1<m&&j1>=0&&!visited[i1][j1]){
+                dfs(i1,j1,n,m);
+            }
+        }
+    }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int m = sc.nextInt();
+        int u = sc.nextInt();
+        int v = sc.nextInt();
+        int s = sc.nextInt();
+        int t = sc.nextInt();
+        u--; v--; s--; t--;
+        int a[][] = new int[n][m];
+        for(int i=0;i<n;i++){
+            for(int j=0;j<m;j++){
+                a[i][j] = sc.nextInt();
+                if(a[i][j] == 0){
+                    visited[i][j] = true;
+                }
+            }
+        }
+        dfs(u,v,n,m);
+        if(!visited[s][t])
+            System.out.println("NO");
+        else
+            System.out.println("YES");
+    }
+}
+*/
+
+
+//Bai 21
+/*
+public class bai_10{
+    public static int dx[] = {-1,-2,-2,-1,1,2,2,1};
+    public static int dy[] = {-2,-1,1,2,2,1,-1,-2};
+    
+    public static boolean visited[][] = new boolean[100][100];
+    public static void dfs(int i,int j,int n){
+        visited[i][j] = true;
+        for(int k=0;k<8;k++){
+            int i1 = i + dx[k];
+            int j1 = j + dy[k];
+            if(i1<n&&i1>=0&&j1<n&&j1>=0&&!visited[i1][j1]){
+                dfs(i1,j1,n);
+            }
+        }
+    }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int u = sc.nextInt();
+        int v = sc.nextInt();
+        int s = sc.nextInt();
+        int t = sc.nextInt();
+        u--; v--; s--; t--;
+        int a[][] = new int[n][n];
+        for(int i=0;i<n;i++){
+            for(int j=0;j<n;j++){
+                a[i][j] = sc.nextInt();
+                if(a[i][j] == 0){
+                    visited[i][j] = true;
+                }
+            }
+        }
+        dfs(u,v,n);
+        if(!visited[s][t])
+            System.out.println("NO");
+        else
+            System.out.println("YES");
+    }
+}
+*/
+
+
+//Bai 22
+/*
+public class bai_10{
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int a[][] = new int[n][n];
+        for(int i=0;i<n;i++){
+            for(int j=0;j<n;j++){
+                a[i][j] = sc.nextInt();
+            }
+        }
+        for(int i=0;i<n;i++){
+            if(i%2==0){
+                for(int j=0;j<n;j++){
+                    System.out.print(a[i][j]+" ");
+                }
+            }
+            else{
+                for(int j = n-1;j>=0;j--){
+                    System.out.print(a[i][j]+" ");
+                }
+            }
+            System.out.println("");
+        }
+    }
+}
+*/
+
+
+//Bai 23
+/*
+public class bai_10{
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        for(int i=0;i<n;i++){
+            for(int j=0;j<n;j++){
+                int tmp = sc.nextInt();
+                if(i==0||i==n-1||j==0||j==n-1)
+                    System.out.print(tmp+" ");
+            }
+        }
+    }
+}
+*/
+
+
+//Bai 24
+/*
+public class bai_10{
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int a[][] = new int[n][n];
+        TreeMap<Integer,Integer>map = new TreeMap<>();
+        for(int i=0;i<n;i++){
+            for(int j=0;j<n;j++){
+                a[i][j] = sc.nextInt();
+                if(i==0){
+                    map.put(a[i][j], 1);
+                }
+            }
+        }
+        for(int i=1;i<n;i++){
+            for(int j=0;j<n;j++){
+                if(map.containsKey(a[i][j])){
+                    if(map.get(a[i][j])==i){
+                        map.put(a[i][j], i+1);
+                    }
+                }
+            }
+        }
+        Set<Map.Entry<Integer,Integer>>entrySet = map.entrySet();
+        boolean check = false;
+        for(Map.Entry<Integer, Integer>entry:entrySet){
+            if(entry.getValue()==n){
+                check  = true;
+                System.out.print(entry.getKey()+" ");
+            }
+        }
+        if(check == false)
+            System.out.println("NOT FOUND");
+    }
+}
+*/
+
+
+//Bai 25
+/*
+public class bai_10{
+    public static int cnt = 0;
+    public static int dx[] = {-1,0,1,0};
+    public static int dy[] = {0,1,0,-1};
+    public static boolean visited[][] = new boolean[500][500];
+    public static void dfs(int i,int j,int n, int m){
+        cnt++;
+        visited[i][j] = true;
+        for(int k=0;k<4;k++){
+            int i1 = i + dx[k];
+            int j1 = j + dy[k];
+            if(i1>=0&&i1<n&&j1>=0&&j1<m&&!visited[i1][j1]){
+                dfs(i1,j1,n,m);
+            }
+        }
+    }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int m = sc.nextInt();
+        int a[][] = new int[n][m];
+        for(int i=0;i<n;i++){
+            for(int j=0;j<m;j++){
+                a[i][j] = sc.nextInt();
+                if(a[i][j]==0)
+                    visited[i][j] = true;
+            }
+        }
+        int maxn =0;
+        for(int i=0;i<n;i++){
+            for(int j=0;j<m;j++){
+                cnt = 0;
+                if(!visited[i][j]){
+                    dfs(i,j,n,m);
+                    maxn = Math.max(maxn,cnt);
+                }
+            }
+        }
+        System.out.println(maxn);
+    }
+}
+*/
+
+
+//Bai 26
+/*
+public class bai_10{
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int a[][] = new int[n+3][n+3];
+        for(int i=1;i<=n;i++){
+            for(int j=1;j<=n;j++){
+                a[i][j] = sc.nextInt();
+            }
+        }
+        for(int i=2;i<=n;i++){
+            for(int j=1;j<=n;j++){
+                a[i][j]+=Math.max(a[i-1][j-1], Math.max(a[i-1][j],a[i-1][j+1]));
+            }
+        }
+        int maxn = 0;
+        for(int i=1;i<=n;i++){
+            maxn = Math.max(maxn,a[n][i]);
+        }
+        System.out.println(maxn);
+    }
+}
+*/
+
+
+//Bai 27
+/*
+public class bai_10{
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int a[][] = new int[n+3][n+3];
+        for(int i=1;i<=n;i++){
+            for(int j=1;j<=n;j++){
+                a[i][j] = sc.nextInt();
+            }
+        }
+        for(int i=2;i<=n;i++){
+            for(int j=1;j<=n;j++){
+                if(j==1)
+                    a[j][i] += Math.max(a[j][i - 1],a[j + 1][i - 1]);
+                else if(j==n)
+                    a[j][i] += Math.max(a[j][i-1],a[j -1][i - 1]);
+                else
+                    a[j][i]+=Math.max(a[j][i - 1], Math.max(a[j + 1][i-1],a[j - 1][i -1]));
+            }
+        }
+        int maxn = -1000000;
+        for(int i=1;i<=n;i++){
+            maxn = Math.max(maxn,a[i][n]);
+        }
+        System.out.println(maxn);
+    }
+}
+*/
+
+
+//Bai 28
+/*
+public class bai_10{
+    public static int dx[] = {-1,-1,-1,0,1,1,1,0};
+    public static int dy[] = {-1,0,1,1,1,0,-1,-1};
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int a[][] = new int[n+2][n+2];
+        int b[][] = new int[n+2][n+2];
+        for(int i=1;i<=n;i++){
+            for(int j=1;j<=n;j++){
+                a[i][j] = sc.nextInt();
+            }
+        }
+        for(int i=2;i<= n - 1;i++){
+            for(int j=2;j <= n - 1;j++){
+                b[i][j] = a[i][j];
+                for(int k=0;k<8;k++){
+                    int i1 = i + dx[k];
+                    int j1 = j + dy[k];
+                    b[i][j] += a[i1][j1];
+                }
+            }
+        }
+        int maxn = 0;
+        for(int i=2;i<=n - 1;i++){
+            for(int j=2;j<=n - 1;j++){
+                maxn = Math.max(b[i][j],maxn);
+            }
+        }
+        System.out.println(maxn);
+    }
+}
+*/
+
+
+//Bai 29
+/*
+public class bai_10{
+    public static int cnt = 0;
+    public static int dx[] = {-1,-1,1,1};
+    public static int dy[] = {-1,1,1,-1};
+    public static boolean visited[][] = new boolean[500][500];
+    public static void dfs(int i,int j,int n){
+        cnt++;
+        visited[i][j] = true;
+        for(int k=0;k<4;k++){
+            int i1 = i + dx[k];
+            int j1 = j + dy[k];
+            if(i1>=0&&i1<n&&j1>=0&&j1<n&&!visited[i1][j1]){
+                dfs(i1,j1,n);
+            }
+        }
+    }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int u = sc.nextInt();
+        int v = sc.nextInt();
+        u--; v--;
+        int a[][] = new int[n][n];
+        for(int i=0;i<n;i++){
+            for(int j=0;j<n;j++){
+                a[i][j] = sc.nextInt();
+                if(a[i][j]==1)
+                    visited[i][j] = true;
+            }
+        }
+        dfs(u,v,n);
+        System.out.println(cnt);
+    }
+}
+*/
+
+
+//bai 30
+/*
+public class bai_10{
+    public static int cnt = 0;
+    public static int dx[] = {0,-1,0,1};
+    public static int dy[] = {-1,0,1,0};
+    public static boolean visited[][] = new boolean[500][500];
+    public static void dfs(int i,int j,int n){
+        cnt++;
+        visited[i][j] = true;
+        for(int k=0;k<4;k++){
+            int i1 = i + dx[k];
+            int j1 = j + dy[k];
+            if(i1>=0&&i1<n&&j1>=0&&j1<n&&!visited[i1][j1]){
+                dfs(i1,j1,n);
+            }
+        }
+    }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int u = sc.nextInt();
+        int v = sc.nextInt();
+        u--; v--;
+        int a[][] = new int[n][n];
+        for(int i=0;i<n;i++){
+            for(int j=0;j<n;j++){
+                a[i][j] = sc.nextInt();
+                if(a[i][j]==1)
+                    visited[i][j] = true;
+            }
+        }
+        dfs(u,v,n);
+        System.out.println(cnt);
+    }
+}
+*/

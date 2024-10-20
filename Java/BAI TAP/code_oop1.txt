@@ -1,0 +1,1894 @@
+Bai1:
+import java.io.*;
+import java.util.*;
+
+public class PhanSo {
+    private long tu;
+    private long mau;
+    public PhanSo(long tu, long mau) {
+        super();
+        this.tu = tu;
+        this.mau = mau;
+    }
+    public long uocChung(long tu, long mau) {
+        while(mau != 0) {
+            long du = tu % mau;
+            tu = mau;
+            mau = du;
+        }
+        return tu;
+    }
+    public void inPhanSo() {
+        long x = tu / uocChung(tu, mau);
+        long y = mau / uocChung(tu, mau);
+        System.out.println(x + "/" + y);
+    }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        long x = sc.nextLong(), y = sc.nextLong();
+        PhanSo ps = new PhanSo(x, y);
+        ps.inPhanSo();
+    }
+}
+
+Bai2:
+import java.util.Scanner;
+public class SinhVien {
+    private String name;
+    private String date;
+    private double d1, d2, d3;
+    public SinhVien(String name, String date, double d1, double d2, double d3) {
+        super();
+        this.name = name;
+        this.date = date;
+        this.d1 = d1;
+        this.d2 = d2;
+        this.d3 = d3;
+    }
+    
+    public SinhVien() {
+        super();
+    }
+
+    public String getName() {
+        return name;
+    }
+    public void setName(String name) {
+        this.name = name;
+    }
+    public String getDate() {
+        return date;
+    }
+    public void setDate(String date) {
+        this.date = date;
+    }
+    public double getD1() {
+        return d1;
+    }
+    public void setD1(double d1) {
+        this.d1 = d1;
+    }
+    public double getD2() {
+        return d2;
+    }
+    public void setD2(double d2) {
+        this.d2 = d2;
+    }
+    public double getD3() {
+        return d3;
+    }
+    public void setD3(double d3) {
+        this.d3 = d3;
+    }
+    public double tongDiem(double d1, double d2, double d3) {
+        return (d1+d2+d3);
+    }
+    
+
+
+public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    SinhVien sv = new SinhVien();
+    String ten = sc.nextLine();
+    String ngaySinh = sc.nextLine();
+    double d1 = sc.nextDouble(), d2 = sc.nextDouble(), d3 = sc.nextDouble();
+    sv.setName(ten);
+    sv.setDate(ngaySinh);
+    sv.setD1(d1);
+    sv.setD2(d2);
+    sv.setD3(d3);
+    System.out.print(sv.getName() + " " + sv.getDate() + " ");
+    System.out.printf("%.1f", sv.tongDiem(d1, d2, d3));
+}
+}
+
+Bai3:
+import java.util.Scanner;
+public class SinhVien {
+    private String MaSV = "SV001";
+    private String HoTen;
+    private String Lop;
+    private String date;
+    private double GPA;
+    
+    public SinhVien(String hoTen, String lop, String date, double gPA) {
+        HoTen = hoTen;
+        Lop = lop;
+        this.date = date;
+        GPA = gPA;
+    }
+    public String chuanHoa(String date) {
+        StringBuilder sb = new StringBuilder(date);
+        if(sb.charAt(1) == '/') {
+            sb.insert(0, "0");
+        }
+        if(sb.charAt(4) == '/') {
+            sb.insert(3, "0");
+        }
+        date = sb.toString();
+        return date;
+    }
+    public void in() {
+        System.out.print(MaSV + " " + HoTen + " " + Lop + " " + chuanHoa(date) + " ");
+        System.out.printf("%.1f", GPA);
+    }
+    public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    SinhVien sv = new SinhVien(sc.nextLine(), sc.nextLine(), sc.nextLine(), sc.nextDouble());
+    sv.in();
+    }
+}
+
+Bai4:
+import java.io.*;
+import java.util.*;
+
+public class NhanVien {
+    private String maNv = "00001";
+    private String hoTen;
+    private String gioiTinh;
+    private String ngaySinh;
+    private String queQuan;
+    private String maSoThue;
+    private String ngayKyHopDong;
+    public String chuanHoaTen(String hoTen) {
+        StringBuilder sb = new StringBuilder(hoTen);
+        if(hoTen.length() > 50) {
+            sb.delete(51, hoTen.length());
+            this.hoTen = sb.toString();
+        }
+        return this.hoTen = sb.toString();
+    }
+    public String chuanHoaNgayThang(String ngayThang) {
+        StringBuilder sb = new StringBuilder(ngayThang);
+        if(sb.charAt(1) == '/') {
+            sb.insert(0, "0");
+        }
+        if(sb.charAt(4) == '/') {
+            sb.insert(3, "0");
+        }
+        return this.ngayKyHopDong = sb.toString();
+    }
+    public NhanVien(String hoTen, String gioiTinh, String ngaySinh, String queQuan, String maSoThue, String ngayKyHopDong) {
+        super();
+        this.hoTen = chuanHoaTen(hoTen);
+        this.gioiTinh = gioiTinh;
+        this.ngaySinh = chuanHoaNgayThang(ngaySinh);
+        this.queQuan = queQuan;
+        this.maSoThue = maSoThue;
+        this.ngayKyHopDong = chuanHoaNgayThang(ngayKyHopDong);
+    }
+    @Override
+    public String toString() {
+        return  maNv + " " + hoTen + " " + gioiTinh + " "+ ngaySinh + " " + queQuan
+                + " " + maSoThue + " " + ngayKyHopDong;
+    }
+        public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        NhanVien nv = new NhanVien(sc.nextLine(), sc.nextLine(), sc.nextLine(), sc.nextLine(), sc.nextLine(), sc.nextLine());
+        System.out.println(nv.toString());
+    }
+}
+
+Bai5:
+/*
+import java.io.*;
+import java.util.*;
+
+public class NhanVien {
+    private String maNv = "00001";
+    private String hoTen;
+    private String gioiTinh;
+    private String ngaySinh;
+    private String queQuan;
+    private String maSoThue;
+    private String ngayKyHopDong;
+    public String chuanHoaTen(String Ten) {
+        String chuanHoa = "";
+        String token[] = Ten.split("\\s+");
+        for(String x : token) {
+            chuanHoa += Character.toUpperCase(x.charAt(0));
+            for(int i=1; i<x.length(); i++) {
+                chuanHoa += Character.toLowerCase(x.charAt(i));
+            }
+            chuanHoa += " ";
+        }
+        return this.hoTen = chuanHoa.trim();
+    }
+    public String chuanHoaNgayThang(String ngayThang) {
+        StringBuilder sb = new StringBuilder(ngayThang);
+        if(sb.charAt(1) == '/') {
+            sb.insert(0, "0");
+        }
+        if(sb.charAt(4) == '/') {
+            sb.insert(3, "0");
+        }
+        return this.ngayKyHopDong = sb.toString();
+    }
+    public NhanVien(String hoTen, String gioiTinh, String ngaySinh, String queQuan, String maSoThue, String ngayKyHopDong) {
+        super();
+        this.hoTen = chuanHoaTen(hoTen);
+        this.gioiTinh = gioiTinh;
+        this.ngaySinh = chuanHoaNgayThang(ngaySinh);
+        this.queQuan = queQuan;
+        this.maSoThue = maSoThue;
+        this.ngayKyHopDong = chuanHoaNgayThang(ngayKyHopDong);
+    }
+    @Override
+    public String toString() {
+        return  maNv + " " + hoTen + " " + gioiTinh + " "+ ngaySinh + " " + queQuan
+                + " " + maSoThue + " " + ngayKyHopDong;
+    }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        NhanVien nv = new NhanVien(sc.nextLine(), sc.nextLine(), sc.nextLine(), sc.nextLine(), sc.nextLine(), sc.nextLine());
+        System.out.println(nv.toString());
+    }
+}
+*/
+
+Bai6:
+import java.io.*;
+import java.util.*;
+
+public class Retange {
+    private double width;
+    private double height;
+    private String color;
+    public Retange(double width, double height, String color) {
+        super();
+        this.width = width;
+        this.height = height;
+        this.color = color;
+    }
+    public Retange() {
+        super();
+    }
+    public double getWidth() {
+        return width;
+    }
+    public void setWidth(double width) {
+        this.width = width;
+    }
+    public double getHeight() {
+        return height;
+    }
+    public void setHeight(double height) {
+        this.height = height;
+    }
+    public String getColor() {
+        return color;
+    }
+    public void setColor(String color) {
+        
+        this.color = color;
+    }
+    public String chuanHoa(String color) {
+        String chuanHoa = "";
+        String token[] = color.split("\\s+");
+        for(String x : token) {
+            chuanHoa += Character.toUpperCase(x.charAt(0));
+            for(int i=1; i<x.length(); i++) {
+                chuanHoa += Character.toLowerCase(x.charAt(i));
+            }
+            chuanHoa += " ";
+        }
+        return chuanHoa.trim();
+    }
+    public double findArea() {
+        return width * height;
+    }
+    public double findPrerimeter() {
+        return (width + height)*2;
+    }
+    public void in() {
+        if(width > 0 && height > 0) {
+            System.out.printf("%.0f", findPrerimeter());
+            System.out.print(" ");
+            System.out.printf("%.0f", findArea());
+            System.out.print(" "  + chuanHoa(color));
+        }
+        else {
+            System.out.println("INVALID");
+        }
+    }
+        public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        Retange r = new Retange(sc.nextDouble(), sc.nextDouble(), sc.next());
+        r.in();
+    }
+}
+
+Bai7:
+import java.io.*;
+import java.util.*;
+
+public class GiaoVien {
+    private String maGV;
+    private String hoTen;
+    private long luongCoBan;
+    public GiaoVien(String maGV, String hoTen, long luongCoBan) {
+        super();
+        this.maGV = maGV;
+        this.hoTen = hoTen;
+        this.luongCoBan = luongCoBan;
+    }
+    public long thuNhap() {
+        long bacLuong = Long.parseLong(maGV.substring(2));
+        long luongTroCap = 0;
+        if(maGV.contains("HP")) {
+            luongTroCap = 900000;
+        }
+        else if(maGV.contains("HT")) {
+            luongTroCap = 2000000;
+        }
+        else {
+            luongTroCap = 500000;
+        }
+        return luongCoBan * bacLuong + luongTroCap;
+    }
+    public int heSoBacLuong() {
+        return Integer.parseInt(maGV.substring(2));
+    }
+    public void inThongTin() {
+        System.out.println(maGV + " " + hoTen + " " + heSoBacLuong() + " " + thuNhap());
+    }
+        public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        GiaoVien gv = new GiaoVien(sc.nextLine(), sc.nextLine(), sc.nextLong());
+        gv.inThongTin();
+    }
+}
+
+Bai8:
+import java.io.*;
+import java.util.*;
+
+public class NhanVien {
+    private String maNv = "NV01";
+    private String hoTen;
+    private long luongCoBanMoiNgay;
+    private int soNgayCong;
+    private String chucVu;
+    public NhanVien(String hoTen, long luongCoBanMoiNgay, int soNgayCong, String chucVu) {
+        this.hoTen = hoTen;
+        this.luongCoBanMoiNgay = luongCoBanMoiNgay;
+        this.soNgayCong = soNgayCong;
+        this.chucVu = chucVu;
+    }
+    public long luongThang() {
+        return (long)soNgayCong * luongCoBanMoiNgay;
+    }
+    public long luongThuong() {
+        long luong = 0;
+        if(soNgayCong >= 25) {
+            luong = luongThang()*20/100;
+        }
+        else if(soNgayCong >= 22 && soNgayCong < 25) {
+            luong = luongThang() *10/100;
+        }
+        return luong;
+    }
+    public int phuCap() {
+        int luong = 0;
+        if(chucVu.compareTo("GD") == 0) {
+            luong = 250000;
+        }
+        else if(chucVu.compareTo("PGD") == 0) {
+            luong = 200000;
+        }
+        else if(chucVu.compareTo("TP") == 0) {
+            luong = 180000;
+        }
+        else {
+            luong = 150000;
+        }
+        return luong;
+    }
+    public long thuNhap() {
+        long luong =(long) phuCap() + luongThang() + luongThuong();
+        return luong;
+    }
+    public void in () {
+        System.out.println(maNv + " " + hoTen + " " + luongThang() + " "+ luongThuong() +" " + phuCap() + " " + thuNhap());
+    }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        NhanVien nv = new NhanVien(sc.nextLine(), sc.nextLong(), sc.nextInt(), sc.next());
+        nv.in();
+    }
+}
+Bai9:
+import java.io.*;
+import java.util.*;
+import java.util.Scanner;
+
+public class ThiSinh {
+   private String maThiSinh;
+    private String hoTen;
+    private double diemToan;
+    private double diemLi;
+    private double diemHoa;
+    public ThiSinh(String maThiSinh, String hoTen, double diemToan, double diemLi, double diemHoa) {
+        this.maThiSinh = maThiSinh;
+        this.hoTen = hoTen;
+        this.diemToan = diemToan;
+        this.diemLi = diemLi;
+        this.diemHoa = diemHoa;
+    }
+    public int khuVuc() {
+        String t = "" + maThiSinh.charAt(2);
+        return Integer.parseInt(t);
+    }
+    public double tongDiem() {
+        double diemUuTien = 0;
+        if(khuVuc() == 1) {
+            diemUuTien = 0.5;
+        }
+        else if(khuVuc() == 2) {
+            diemUuTien = 1.0;
+        }
+        else {
+            diemUuTien = 2.5;
+        }
+        return diemUuTien + diemHoa + diemLi + diemToan;
+        
+    }
+    public void in() {
+        if(tongDiem() >= 24) {
+            System.out.print(maThiSinh + " " + hoTen + " " + khuVuc() + " ");
+            if(tongDiem() == (int)tongDiem()) System.out.printf("%.0f", tongDiem());
+            else System.out.printf("%.1f", tongDiem());
+            System.out.print(" TRUNG TUYEN");
+        }
+        else {
+            System.out.print(maThiSinh + " " + hoTen + " " + khuVuc() + " " );
+            if(tongDiem() == (int)tongDiem()) System.out.printf("%.0f", tongDiem());
+            else System.out.printf("%.1f", tongDiem());
+            System.out.println(" TRUOT");
+
+        }
+    }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        ThiSinh nv = new ThiSinh(sc.nextLine(), sc.nextLine(), sc.nextDouble(), sc.nextDouble(), sc.nextDouble());
+        nv.in();
+    }
+}
+
+Bai10:
+import java.util.ArrayList;
+import java.util.Scanner;
+
+
+public class PhanSo {
+    private int tu1, mau1;
+    private int tu2, mau2;
+    public PhanSo(int tu1, int mau1, int tu2, int mau2) {
+        super();
+        this.tu1 = tu1;
+        this.mau1 = mau1;
+        this.tu2 = tu2;
+        this.mau2 = mau2;
+    }
+    public long gcd(long a, long b) {
+        while(b != 0) {
+            long du = a % b;
+            a = b;
+            b = du;
+        }
+        return a;
+    }
+    public String bieuThuc1() {
+        long A = tu1 /(gcd(tu1, mau1)), B = mau1/(gcd(tu1, mau1));
+        long C = tu2/(gcd(tu2, mau2)), D = mau2/(gcd(tu2, mau2));
+        long x = (long)Math.pow(A*D + B*C, 2);
+        long y = (int)Math.pow(B*D, 2);
+        long tu = x/(gcd(x,y));
+        long mau = y/(gcd(x,y));
+        return tu +"/"+mau;
+    }
+    public String bieuThuc2() {
+        long A = tu1 /(gcd(tu1, mau1)), B = mau1/(gcd(tu1, mau1));
+        long C = tu2/(gcd(tu2, mau2)), D = mau2/(gcd(tu2, mau2));
+        long x = (int)Math.pow(A*D + B*C, 2);
+        long y = (int)Math.pow(B*D, 2);
+        long E = x/(gcd(x,y));
+        long F = y/(gcd(x,y));
+        long tu = A*C*E;
+        long mau = B*D*F;
+        if(tu <0 && mau <0)
+            return Math.abs(tu/(gcd(tu,mau))) +"/" + Math.abs(mau/(gcd(tu,mau)));
+        else {
+            return tu/(gcd(tu,mau)) +"/" + mau/(gcd(tu,mau));
+        }
+        
+    }
+    public void in() {
+        System.out.println(bieuThuc1() +" " + bieuThuc2());
+    }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        ArrayList<PhanSo> ps = new ArrayList<>();
+        int n = sc.nextInt();
+        for(int i=0; i<n; i++) {
+            PhanSo tmp = new PhanSo(sc.nextInt(), sc.nextInt(), sc.nextInt(), sc.nextInt());
+            ps.add(tmp);
+        }
+        for(int i=0; i<ps.size(); i++) {
+            ps.get(i).in();
+        }
+    }
+}
+
+Bai11:
+import java.io.*;
+import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Scanner;
+
+
+public class IntSet {
+    private int a[];
+    public IntSet(int[] a) {
+        super();
+        this.a = a;
+    }
+    
+    public int[] getA() {
+        return a;
+    }
+
+    public void setA(int[] a) {
+        this.a = a;
+    }
+
+    public IntSet intersection(IntSet x) {
+        ArrayList<Integer> arr = new ArrayList<>();
+        Arrays.sort(a);
+        Arrays.sort(x.getA());
+        int cnt = 0;
+        for(int i=0; i<a.length; i++) {
+            for(int j = 0; j<x.getA().length; j++) {
+                if(a[i] == x.getA()[j]) {
+                    if(arr.contains(a[i]) == false) {
+                        arr.add(a[i]);
+                    }
+                }
+            }
+        }
+        int c[] = new int[arr.size()];
+        for(int i=0; i<c.length; i++){
+            c[i] = arr.get(i);
+        }
+        IntSet in = new IntSet(c);
+        String t = "";
+        for(int i=0; i<c.length; i++) {
+            t += "" + c[i] + " ";
+        }
+        return in;
+    }
+
+    @Override
+    public String toString() {
+        String t = "";
+        for(int i=0; i<a.length; i++) {
+            t += "" + a[i] + " ";
+        }
+        return  t;
+    }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int m = sc.nextInt();
+        int a[] = new int[n];
+        int b[] = new int[m];
+        for(int i=0; i<n; i++) {
+            a[i] = sc.nextInt();
+        }
+        for(int i=0; i<m; i++) {
+            b[i] = sc.nextInt();
+        }
+        IntSet s1 = new IntSet(a);
+        IntSet s2 = new IntSet(b);
+        IntSet s3 = s1.intersection(s2);
+        System.out.println(s3);
+    }
+}
+
+Bai12:
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Scanner;
+
+
+public class IntSet {
+    private int a[];
+
+    public IntSet(int[] a) {
+        super();
+        this.a = a;
+    }
+
+    public int[] getA() {
+        return a;
+    }
+
+    public void setA(int[] a) {
+        this.a = a;
+    }
+    public IntSet union(IntSet x) {
+        ArrayList<Integer> arr = new ArrayList<>();
+        Arrays.sort(a);
+        Arrays.sort(x.getA());
+        for(int i=0; i<a.length; i++) {
+            if(arr.contains(a[i]) == false) {
+                arr.add(a[i]);
+            }
+        }
+        for(int i=0; i<x.getA().length; i++) {
+            if(arr.contains(x.getA()[i]) == false) {
+                arr.add(x.getA()[i]);
+            }
+        }
+        int c[] = new int[arr.size()];
+        for(int i=0; i<arr.size(); i++) {
+            c[i] = arr.get(i);
+        }
+        Arrays.sort(c);
+        IntSet is = new IntSet(c);
+        return is;
+    }
+
+    @Override
+    public String toString() {
+        String t = "";
+        for(int i=0; i<a.length; i++) {
+            t += "" + a[i] + " ";
+        }
+        return t;
+    }
+        public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt(), m = sc.nextInt();
+        int a[] = new int[n];
+        int b[] = new int[m];
+        for(int i=0; i<n; i++) {
+            a[i] = sc.nextInt();
+        }
+        for(int i=0; i<m; i++) {
+            b[i] = sc.nextInt();
+        }
+        IntSet s1 = new IntSet(a);
+        IntSet s2 = new IntSet(b);
+        IntSet s3 = s1.union(s2);
+        System.out.println(s3);
+    }
+}
+
+Bai13:
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Scanner;
+
+
+public class WordSet {
+    private String s;
+    public WordSet(String s) {
+        super();
+        this.s = s;
+    }
+    
+    public String getS() {
+        return s;
+    }
+
+    public void setS(String s) {
+        this.s = s;
+    }
+
+    public String union(WordSet w) {
+        s = s.toLowerCase();
+        String token1[] = s.split("\\s+");
+        w.getS().toLowerCase();
+        String token2[] = w.getS().split("\\s+");
+        ArrayList<String> arr = new ArrayList<>();
+        for(String x : token1) {
+            if(arr.contains(x) == false) {
+                arr.add(x);
+            }
+        }
+        for(String x : token2) {
+            if(arr.contains(x) == false) {
+                arr.add(x);
+            }
+        }
+        String c[] = new String[arr.size()];
+        for(int i=0; i<arr.size(); i++) {
+            c[i] = arr.get(i);
+        }
+        Arrays.sort(c);
+        String t = "";
+        for(int i=0; i<c.length; i++) {
+            t += c[i] + " ";
+        }
+        WordSet ws = new WordSet(t);
+        return ws.getS();
+    }
+    public String intersection(WordSet x) {
+         s = s.toLowerCase();
+         x.getS().toLowerCase();
+         String token1[] = s.split("\\s+");
+         String token2[] = x.getS().split("\\s+");
+         ArrayList<String> arr = new ArrayList<>();
+         for(int i=0; i<token1.length; i++) {
+             for(int j = 0; j <token2.length; j++) {
+                 if(token1[i].equals(token2[j]) && arr.contains(token1[i]) == false) {
+                     arr.add(token1[i]);
+                 }
+             }
+         }
+         String c[] = new String[arr.size()];
+         for(int i=0; i<arr.size(); i++) {
+             c[i] = arr.get(i);
+         }
+         Arrays.sort(c);
+         String t = "";
+         for(int i=0; i<c.length; i++) {
+                t += c[i] + " ";
+            }
+         WordSet ws = new WordSet(t);
+         return ws.getS();
+    }
+        public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        WordSet s1 = new WordSet(sc.nextLine());
+        WordSet s2 = new WordSet(sc.nextLine());
+        System.out.println(s1.union(s2));
+        System.out.println(s1.intersection(s2));
+    }
+}
+
+Bai14:
+import java.util.*;
+
+public class Matrix {
+    private int n, m;
+    private int a[][];
+    public Matrix(int n, int m) {
+        super();
+        this.n = n;
+        this.m = m;
+    }
+    public int getN() {
+        return n;
+    }
+    public void setN(int n) {
+        this.n = n;
+    }
+    public int getM() {
+        return m;
+    }
+    public void setM(int m) {
+        this.m = m;
+    }
+    public int[][] getA() {
+        return a;
+    }
+    public void nextMatric(Scanner sc) {
+        a = new int[n][m];
+        for(int i=0; i<n; i++) {
+            for(int j=0; j<m; j++) {
+                a[i][j] = sc.nextInt();
+            }
+        }
+    }
+    public String mul(Matrix x) {
+        ArrayList<String> arr = new ArrayList<>();
+        int b[][] = new int[n][x.getM()];
+        for(int i=0; i<n; i++) {
+            for(int j=0; j<x.getM(); j++){
+                String t = "";
+                b[i][j] = 0;
+                for(int k = 0; k<m; k++) {
+                    b[i][j] += a[i][k] * x.getA()[k][j];
+                }
+                System.out.print(b[i][j] + " ");
+            }
+            System.out.println();
+        }
+        return "";
+    }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt(), m = sc.nextInt() , p = sc.nextInt();
+        Matrix mx1 = new Matrix(n, m);
+        mx1.nextMatric(sc);
+        Matrix mx2 = new Matrix(m, p);
+        mx2.nextMatric(sc);
+        System.out.println(mx1.mul(mx2));
+    }
+}
+
+Bai15:
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Scanner;
+
+
+public class Matrix {
+    private int n, m;
+    private int a[][];
+    public Matrix(int n, int m) {
+        super();
+        this.n = n;
+        this.m = m;
+    }
+    public int getN() {
+        return n;
+    }
+    public void setN(int n) {
+        this.n = n;
+    }
+    public int getM() {
+        return m;
+    }
+    public void setM(int m) {
+        this.m = m;
+    }
+    
+    
+    public int[][] getA() {
+        return a;
+    }
+    public void setA(int[][] a) {
+        this.a = a;
+    }
+    public void nextMatric(Scanner sc) {
+        a = new int[n][m];
+        for(int i=0; i<n; i++) {
+            for(int j=0; j<m; j++) {
+                a[i][j] = sc.nextInt();
+            }
+        }
+    }
+    public Matrix trans() {
+        Matrix x = new Matrix(m, n);
+        int c[][] = new int[m][n];
+        for(int i=0; i<m; i++) {
+            for(int j=0; j<n; j++) {
+                c[i][j] = a[j][i];
+            }
+        }
+        x.setA(c);
+        return x;
+    }
+    public String mul(Matrix x) {
+        int c[][] = new int[n][x.getM()];
+        for(int i=0; i<n; i++) {
+            for(int j=0; j<x.getM(); j++) {
+                c[i][j] = 0;
+                for(int k=0; k<m; k++) {
+                    c[i][j] += a[i][k] * x.getA()[k][j];
+                }
+                System.out.print(c[i][j] + " ");
+            }
+            System.out.println();
+        }
+        return "";
+    }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt(), m = sc.nextInt() ;
+        Matrix mx1 = new Matrix(n, m);
+        mx1.nextMatric(sc);
+        Matrix mx2 = mx1.trans();
+        System.out.println(mx1.mul(mx2));
+    }
+}
+
+Bai16:
+import java.io.*;
+import java.util.*;
+
+public class Time {
+    private int gio;
+    private int phut;
+    private int giay;
+    public Time(int gio, int phut, int giay) {
+        super();
+        this.gio = gio;
+        this.phut = phut;
+        this.giay = giay;
+    }
+    public int getGio() {
+        return gio;
+    }
+    public void setGio(int gio) {
+        this.gio = gio;
+    }
+    public int getPhut() {
+        return phut;
+    }
+    public void setPhut(int phut) {
+        this.phut = phut;
+    }
+    public int getGiay() {
+        return giay;
+    }
+    public void setGiay(int giay) {
+        this.giay = giay;
+    }
+    @Override
+    public String toString() {
+        return  gio + " " + phut + " " + giay;
+    }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        ArrayList<Time> time = new ArrayList<>();
+        int n = sc.nextInt();
+        for(int i=0; i<n; i++) {
+            Time tmp = new Time(sc.nextInt(), sc.nextInt(), sc.nextInt());
+            time.add(tmp);
+        }
+        Collections.sort(time, new Comparator<Time>() {
+            @Override
+            public int compare(Time o1, Time o2) {
+                // TODO Auto-generated method stub
+                if(o1.getGio() != o2.getGio()) {
+                    return o1.getGio() - o2.getGio();
+                }
+                else if(o1.getPhut() != o2.getPhut()) {
+                    return o1.getPhut() - o2.getPhut();
+                }
+                 return o1.getGiay() - o2.getGiay();
+            }
+        });
+        for(int i=0; i<time.size(); i++) {
+            System.out.println(time.get(i));
+        }
+    }
+}
+
+Bai17:
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Scanner;
+
+public class Test {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        ArrayList<MatHang> listMatHang = new ArrayList<>();
+        int n = sc.nextInt();
+        for(int i=0; i<n; i++) {
+            sc.nextLine();
+            MatHang tmp = new MatHang(i+1, sc.nextLine(), sc.nextLine(), sc.nextInt(), sc.nextInt());
+            listMatHang.add(tmp);
+        }
+        Collections.sort(listMatHang , new Comparator<MatHang>() {
+            public int compare(MatHang o1, MatHang o2) {
+                // TODO Auto-generated method stub
+                return o2.LoiNhuan() - o1.LoiNhuan();
+            }
+        });
+        for(MatHang x : listMatHang) {
+            System.out.println(x.toString());
+        }
+    }
+}
+class MatHang {
+    private String maMatHang;
+    private String tenMatHang;
+    private String donViTinh;
+    private int giaMua, giaBan;
+    public MatHang(int stt, String tenMatHang, String donViTinh, int giaMua, int giaBan) {
+        super();
+        this.maMatHang = "MH" + String.format("%04d", stt);
+        this.tenMatHang = tenMatHang;
+        this.donViTinh = donViTinh;
+        this.giaMua = giaMua;
+        this.giaBan = giaBan;
+    }
+    public int LoiNhuan() {
+        return giaBan - giaMua;
+    }
+    public String toString() {
+        return maMatHang + " " + tenMatHang + " " + donViTinh + " " + giaMua + " " + giaBan + " " + LoiNhuan();
+    }
+}
+
+Bai18:
+
+import java.io.*;
+import java.util.*;
+
+ class SinhVien {
+    private String hoTen;
+    private String lop;
+    private String ngaySinh;
+    private double gpa;
+    private static int stt = 0;
+    public String getHoTen() {
+        return hoTen;
+    }
+    public void setHoTen(String hoTen) {
+        this.hoTen = hoTen;
+    }
+    public String getLop() {
+        return lop;
+    }
+    public void setLop(String lop) {
+        this.lop = lop;
+    }
+    public String getNgaySinh() {
+        return ngaySinh;
+    }
+    public void setNgaySinh(String ngaySinh) {
+        this.ngaySinh = ngaySinh;
+    }
+    public double getGpa() {
+        return gpa;
+    }
+    public void setGpa(double gpa) {
+        this.gpa = gpa;
+    }
+    public String chuanHoa() {
+        StringBuilder sb = new StringBuilder(ngaySinh);
+        if(sb.charAt(1) == '/') {
+            sb.insert(0, "0");
+        }
+        if(sb.charAt(4) == '/') {
+            sb.insert(3, "0");
+        }
+        ngaySinh = sb.toString();
+        return ngaySinh;
+    }
+    public String toString() {
+        ++stt;
+        return ("SV" + String.format("%03d", stt)) + " " + hoTen + " " + lop + " " + chuanHoa() + " " + String.format("%.2f",gpa);
+    }
+}
+
+public class Test {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        SinhVien []sv = new SinhVien[n];
+        for(int i=0; i<n; i++) {
+            sv[i] = new SinhVien();
+            sc.nextLine();
+            String ten = sc.nextLine();
+            sv[i].setHoTen(ten);
+            String lop = sc.nextLine();
+            sv[i].setLop(lop);
+            String ngaySinh = sc.nextLine();
+            sv[i].setNgaySinh(ngaySinh);
+            double gpa = sc.nextDouble();
+            sv[i].setGpa(gpa);
+        }
+        for(int i=0; i<n; i++) {
+            System.out.println(sv[i].toString());
+        }
+    }
+}
+
+Bai19:
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Test {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        ArrayList<SinhVien> sv = new ArrayList<>();
+        for(int i=0; i<n; i++) {
+            sc.nextLine();
+            SinhVien tmp = new SinhVien(i+1, sc.nextLine(), sc.nextLine(), sc.nextLine(), sc.nextDouble());
+            sv.add(tmp);
+        }
+        for(int i=0; i<sv.size(); i++) {
+            System.out.println(sv.get(i).toString());
+        }
+    }
+}
+
+class SinhVien {
+    private String MaSv;
+    private String hoTen;
+    private String lop;
+    private String ngaySinh;
+    private double gpa;
+    public SinhVien(int stt,String hoTen,String lop, String ngaySinh, double gpa) {
+        super();
+        this.MaSv = "SV" + String.format("%03d", stt);
+        this.hoTen = hoTen;
+        this.lop = lop;
+        this.ngaySinh = ngaySinh;
+        this.gpa = gpa;
+    }
+   public String chuanHoaTen() {
+        String token[] = hoTen.split("\\s+");
+        String ten = "";
+        for(String x : token) {
+            ten += Character.toUpperCase(x.charAt(0));
+            for(int i=1; i<x.length(); i++) {
+                ten += Character.toLowerCase(x.charAt(i));
+            }
+            ten += " ";
+        }
+        return ten.trim();
+    }
+    public String chuanHoaNgaySinh() {
+        StringBuilder sb = new StringBuilder(ngaySinh);
+        if(sb.charAt(1) == '/') {
+            sb.insert(0, "0");
+        }
+        if(sb.charAt(4) == '/') {
+            sb.insert(3, "0");
+        }
+        ngaySinh = sb.toString();
+        return ngaySinh;
+    }
+    @Override
+    public String toString() {
+        return MaSv + " " + chuanHoaTen() + " " + lop + " " + chuanHoaNgaySinh() + " " + String.format("%.2f", gpa);
+    }
+}
+Bai20:
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Scanner;
+
+public class Test {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        ArrayList<SinhVien> sv = new ArrayList<>();
+        for(int i=0; i<n; i++) {
+            sc.nextLine();
+            SinhVien tmp = new SinhVien(i+1, sc.nextLine(), sc.nextLine(), sc.nextLine(), sc.nextDouble());
+            sv.add(tmp);
+        }
+        Collections.sort(sv, new Comparator<SinhVien>() {
+            @Override
+            public int compare(SinhVien o1, SinhVien o2) {
+                if(o1.getGpa() < o2.getGpa()) {
+                    return 1;
+                }
+                if(o1.getGpa() > o2.getGpa()) {
+                    return -1;
+                }
+                return o1.getMaSv().compareTo(o2.getMaSv());
+            }
+        });
+        for(SinhVien x : sv) {
+            System.out.println(x.toString());
+        }
+    }
+
+}
+class SinhVien {
+    private String MaSv;
+    private String hoTen;
+    private String lop;
+    private String ngaySinh;
+    private double gpa;
+    public SinhVien(int stt,String hoTen,String lop, String ngaySinh, double gpa) {
+        super();
+        this.MaSv = "SV" + String.format("%03d", stt);
+        this.hoTen = hoTen;
+        this.lop = lop;
+        this.ngaySinh = ngaySinh;
+        this.gpa = gpa;
+    }
+   public double getGpa() {
+        return this.gpa;
+    }
+    public String getMaSv() {
+        return MaSv;
+    }
+    public void setMaSv(String maSv) {
+        MaSv = maSv;
+    }
+    public String chuanHoaTen() {
+        String token[] = hoTen.split("\\s+");
+        String ten = "";
+        for(String x : token) {
+            ten += Character.toUpperCase(x.charAt(0));
+            for(int i=1; i<x.length(); i++) {
+                ten += Character.toLowerCase(x.charAt(i));
+            }
+            ten += " ";
+        }
+        return ten.trim();
+    }
+    public String chuanHoaNgaySinh() {
+        StringBuilder sb = new StringBuilder(ngaySinh);
+        if(sb.charAt(1) == '/') {
+            sb.insert(0, "0");
+        }
+        if(sb.charAt(4) == '/') {
+            sb.insert(3, "0");
+        }
+        ngaySinh = sb.toString();
+        return ngaySinh;
+    }
+    @Override
+    public String toString() {
+        return MaSv + " " + chuanHoaTen() + " " + lop + " " + chuanHoaNgaySinh() + " " + String.format("%.2f", gpa);
+    }
+}
+
+Bai21:
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Scanner;
+
+public class Test {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        ArrayList<SinhVien> arr = new ArrayList<>();
+        int n = sc.nextInt();
+        sc.nextLine();
+        for(int i=0; i<n; i++) {
+            SinhVien sv = new SinhVien(i+1, sc.nextLine(), sc.nextLine(), sc.nextLine(), sc.nextLine(), sc.nextLine(), sc.nextLine());
+            arr.add(sv);
+        }
+        for(int i=0; i<arr.size(); i++) {
+            System.out.println(arr.get(i).toString());
+        }
+    }
+
+}
+class SinhVien {
+    private String maNV;
+    private String hoTen;
+    private String gioiTinh;
+    private String ngaySinh;
+    private String diaChi;
+    private String maSoThue;
+    private String ngayKi;
+    public SinhVien(int stt, String hoTen, String gioiTinh, String ngaySinh, String diaChi, String maSoThue, String ngayKi) {
+        super();
+        this.maNV = String.format("%05d", stt);
+        this.hoTen = hoTen;
+        this.gioiTinh = gioiTinh;
+        this.ngaySinh = ngaySinh;
+        this.diaChi = diaChi;
+        this.maSoThue = maSoThue;
+        this.ngayKi = ngayKi;
+    }
+    public String chuanHoa(String x) {
+        StringBuilder sb = new StringBuilder(x);
+        if(sb.charAt(1) == '/') {
+            sb.insert(0, "0");
+        }
+        if(sb.charAt(4) == '/') {
+            sb.insert(3, "0");
+        }
+        x = sb.toString();
+        return x;
+    }
+    @Override
+    public String toString() {
+        return maNV + " " +hoTen + " " + gioiTinh + " " + chuanHoa(ngaySinh) + " " + diaChi + " " + maSoThue + " " + chuanHoa(ngayKi);
+
+    }
+    
+}
+
+Bai22:
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Scanner;
+
+public class Test {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        sc.nextLine();
+        ArrayList<SinhVien> sv = new ArrayList<>();
+        for(int i=0; i<n; i++) {
+            SinhVien tmp = new SinhVien(i+1, sc.nextLine(), sc.nextLine(), sc.nextLine(), sc.nextLine(), sc.nextLine(), sc.nextLine());
+            sv.add(tmp);
+        }
+        Collections.sort(sv, new Comparator<SinhVien>() {
+            @Override
+            public int compare(SinhVien o1, SinhVien o2) {
+                if(o1.getNam() != o2.getNam()) {
+                    return o1.getNam() - o2.getNam();
+                }
+                if(o1.getThang() != o2.getThang()) {
+                    return o1.getThang() - o2.getThang();
+                }
+                if(o1.getNgay() != o2.getNgay()) {
+                    return o1.getNgay() - o2.getNgay();
+                }
+                return o1.getMaNv().compareTo(o2.getMaNv());
+            }
+        });
+        for(int i=0; i<sv.size(); i++) {
+            System.out.println(sv.get(i));
+        }
+    }
+}
+class SinhVien {
+    private String maNV, hoTen, gioiTinh, ngaySinh;
+    private String diaChi, maThue, ngayKi;
+    public SinhVien(int stt, String hoTen, String gioiTinh, String ngaySinh, String diaChi, String maThue, String ngayKi) {
+        super();
+        this.maNV = String.format("%05d", stt);
+        this.hoTen = hoTen;
+        this.gioiTinh = gioiTinh;
+        this.ngaySinh = ngaySinh;
+        this.diaChi = diaChi;
+        this.maThue = maThue;
+        this.ngayKi = ngayKi;
+    }
+    public String chuanHoa(String x) {
+        StringBuilder sb = new StringBuilder(x);
+        if(sb.charAt(1) == '/') {
+            sb.insert(0, "0");
+        }
+        if(sb.charAt(4) == '/') {
+            sb.insert(3, "0");
+        }
+        x = sb.toString();
+        return x;
+    }
+    public int getNgay() {
+        String t = chuanHoa(ngaySinh).substring(0, 2);
+        return Integer.parseInt(t);
+    }
+    public int getThang() {
+        String t = chuanHoa(ngaySinh).substring(3, 5);
+        return Integer.parseInt(t);
+    }
+    public int getNam() {
+        String t = chuanHoa(ngaySinh).substring(6, chuanHoa(ngaySinh).length());
+        return Integer.parseInt(t);
+    }
+    public String getMaNv() {
+        return this.maNV;
+    }
+    @Override
+    public String toString() {
+        return maNV + " " +hoTen + " " + gioiTinh + " " + chuanHoa(ngaySinh) + " " + diaChi + " " + maThue + " " + chuanHoa(ngayKi);
+    }
+}
+
+Bai23:
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Scanner;
+
+public class Test {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        sc.nextLine();
+        ArrayList<GioQuanNet> arr = new ArrayList<>();
+        for(int i=0; i<n; i++) {
+            GioQuanNet tmp = new GioQuanNet(sc.nextLine(), sc.nextLine(), sc.nextLine(), sc.nextLine(), sc.nextLine());
+            arr.add(tmp);
+        }
+        Collections.sort(arr, new Comparator<GioQuanNet>() {
+            @Override
+            public int compare(GioQuanNet o1, GioQuanNet o2) {
+                if(o1.getGio() != o2.getGio()) {
+                    return o2.getGio() - o1.getGio();
+                }
+                if(o1.getPhut() != o2.getPhut()) {
+                    return o2.getPhut() - o1.getPhut();
+                }
+                return o1.getUsername().compareTo(o2.getUsername());
+            }
+        });
+        for(int i=0; i<arr.size(); i++) {
+            System.out.println(arr.get(i));
+        }
+    }
+}
+class GioQuanNet {
+    private String username;
+    private String password;
+    private String ten;
+    private String gioVao;
+    private String gioRa;
+    public GioQuanNet(String username, String password, String ten, String gioVao, String gioRa) {
+        super();
+        this.username = username;
+        this.password = password;
+        this.ten = ten;
+        this.gioVao = gioVao;
+        this.gioRa = gioRa;
+    }
+    public int getGio() {
+        int a = Integer.parseInt(gioVao.substring(0, 2));
+        int b = Integer.parseInt(gioVao.substring(3, gioVao.length()));
+        int c = Integer.parseInt(gioRa.substring(0, 2));
+        int d = Integer.parseInt(gioRa.substring(3, gioRa.length()));
+        int hh = c - a;
+        int mm = d - b;
+        if(mm < 0) {
+            mm = 60 + mm;
+            --hh;
+        }
+        return hh;
+    }
+    public int getPhut() {
+        int a = Integer.parseInt(gioVao.substring(0, 2));
+        int b = Integer.parseInt(gioVao.substring(3, gioVao.length()));
+        int c = Integer.parseInt(gioRa.substring(0, 2));
+        int d = Integer.parseInt(gioRa.substring(3, gioRa.length()));
+        int hh = c - a;
+        int mm = d - b;
+        if(mm < 0) {
+            mm = 60 + mm;
+            --hh;
+        }
+        return mm;
+    }
+    public String thoiGian() {
+        int a = Integer.parseInt(gioVao.substring(0, 2));
+        int b = Integer.parseInt(gioVao.substring(3, gioVao.length()));
+        int c = Integer.parseInt(gioRa.substring(0, 2));
+        int d = Integer.parseInt(gioRa.substring(3, gioRa.length()));
+        int hh = c - a;
+        int mm = d - b;
+        if(mm < 0) {
+            mm = 60 + mm;
+            --hh;
+        }
+        return hh +" gio " + mm + " phut"; 
+    }
+    public String getUsername() {
+        return this.username;
+    }
+    @Override
+    public String toString() {
+        return username + " " + password + " " + ten + " " + thoiGian();
+    }
+}
+
+Bai24:
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Scanner;
+
+public class Test {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        ArrayList<BangDiem> arr = new ArrayList<>();
+        int n = sc.nextInt();
+        for(int i=0; i<n; i++) {
+            sc.nextLine();
+            double diem[] = new double[10];
+            String t = sc.nextLine();
+            for(int j=0; j<10; j++) {
+                diem[j] = sc.nextDouble();
+            }
+            BangDiem tmp = new BangDiem(i + 1 , t, diem);
+            arr.add(tmp);
+        }
+        Collections.sort(arr, new Comparator<BangDiem>() {
+            @Override
+            public int compare(BangDiem o1, BangDiem o2) {
+                if(o1.getTongdiem() < o2.getTongdiem()) {
+                    return 1;
+                }
+                if(o1.getTongdiem() > o2.getTongdiem()) {
+                    return -1;
+                }
+                return o1.getMa().compareTo(o2.getMa());
+            }
+        });
+        for(int i=0; i<arr.size(); i++) {
+            System.out.println(arr.get(i).toString());
+        }
+    }
+}
+class BangDiem {
+    private String maHS;
+    private String hoTen;
+    private double[] diem;
+    
+    public BangDiem() {
+        super();
+    }
+    public BangDiem(int stt, String hoTen, double[] diem) {
+        super();
+        if(stt < 10) {
+            this.maHS = "HS" + String.format("%02d", stt);
+        }
+        else {
+            this.maHS = "HS" + String.format("%03d", stt);
+        }
+        
+        this.diem = new double[10];
+        this.hoTen = hoTen;
+        for(int i=0; i<10; i++) {
+            this.diem[i] = diem[i];
+        }
+    }
+    public double getTongdiem() {
+        double res = 0;
+        for(int i=0; i<10; i++) {
+            res += this.diem[i];
+        }
+        return res/10;
+    }
+    public String getMa() {
+        return this.maHS;
+    }
+    public String toString() {
+        String kq = "";
+        if(getTongdiem() >= 9.0) {
+            kq = "XUAT SAC";
+        }
+        else if(getTongdiem() >= 8 && getTongdiem() <= 8.9) {
+            kq = "GIOI";
+        }
+        else if(getTongdiem() >= 7 && getTongdiem() <= 7.9) {
+            kq = "KHA";
+        }
+        else if(getTongdiem() >= 5 && getTongdiem() <=6.9) {
+            kq = "TB";
+        }
+        else {
+            kq = "YEU";
+        }
+        return maHS + " " + hoTen + " "+ String.format("%.1f", getTongdiem())+" " + kq;
+        
+    }
+}
+
+Bai25:
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Scanner;
+
+public class Test {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        ArrayList<HocSinh> listHs = new ArrayList<>();
+        int n = sc.nextInt();
+        sc.nextLine();
+        for(int i=0; i<n; i++) {
+            HocSinh tmp = new HocSinh(sc.nextLine(), sc.nextLine(), sc.nextLine(), sc.nextLine());
+            listHs.add(tmp);
+        }
+        Collections.sort(listHs, new Comparator<HocSinh>() {
+            @Override
+            public int compare(HocSinh o1, HocSinh o2) {
+                if(o1.getLop().equals(o2.getLop()) == false) {
+                    return o1.getLop().compareTo(o2.getLop());
+                }
+                else {
+                    return o1.getMaSV().compareTo(o2.getMaSV());
+                }
+            }
+        });
+        for(HocSinh x : listHs) {
+            System.out.println(x.toString());
+        }
+    }
+}
+class HocSinh {
+    private String maSV;
+    private String hoTen;
+    private String lop;
+    private String email;
+    public HocSinh(String maSV, String hoTen, String lop, String email) {
+        super();
+        this.maSV = maSV;
+        this.hoTen = hoTen;
+        this.lop = lop;
+        this.email = email;
+    }
+    
+    public String getMaSV() {
+        return this.maSV;
+    }
+
+    public void setMaSV(String maSV) {
+        this.maSV = maSV;
+    }
+
+    public String getHoTen() {
+        return this.hoTen;
+    }
+
+    public void setHoTen(String hoTen) {
+        this.hoTen = hoTen;
+    }
+
+    public String getLop() {
+        return lop;
+    }
+
+    public void setLop(String lop) {
+        this.lop = lop;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    @Override
+    public String toString() {
+        return maSV + " " + hoTen + " " + lop + " " + email;
+    }
+}
+
+Bai26;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Scanner;
+
+public class Test {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        ArrayList<HocSinh> listHs = new ArrayList<>();
+        while(sc.hasNext()) {
+            HocSinh tmp = new HocSinh(sc.nextLine() , sc.nextLine(), sc.nextLine(), sc.nextLine());
+            listHs.add(tmp);
+        }
+        Collections.sort(listHs, new Comparator<HocSinh>() {
+            @Override
+            public int compare(HocSinh o1, HocSinh o2) {
+                return o1.getMaSV().compareTo(o2.getMaSV());
+            }
+        });
+        for(HocSinh x : listHs) {
+            System.out.println(x);
+        }
+    }
+}
+
+class HocSinh {
+    private String maSV;
+    private String hoTen;
+    private String lop;
+    private String email;
+    public HocSinh(String maSV, String hoTen, String lop, String email) {
+        super();
+        this.maSV = maSV;
+        this.hoTen = hoTen;
+        this.lop = lop;
+        this.email = email;
+    }
+    
+    public String getMaSV() {
+        return this.maSV;
+    }
+
+    public void setMaSV(String maSV) {
+        this.maSV = maSV;
+    }
+
+    public String getHoTen() {
+        return this.hoTen;
+    }
+
+    public void setHoTen(String hoTen) {
+        this.hoTen = hoTen;
+    }
+
+    public String getLop() {
+        return lop;
+    }
+
+    public void setLop(String lop) {
+        this.lop = lop;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    @Override
+    public String toString() {
+        return maSV + " " + hoTen + " " + lop + " " + email;
+    }
+}
+
+Bai27:
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Scanner;
+
+public class Test {
+    
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        ArrayList<HocSinh> listHs = new ArrayList<>();
+        int n = sc.nextInt();
+        sc.nextLine();
+        for(int i=0; i<n; i++) {
+            HocSinh tmp = new HocSinh(sc.nextLine() , sc.nextLine(), sc.nextLine(), sc.nextLine());
+            listHs.add(tmp);
+        }
+        int q = sc.nextInt();
+        sc.nextLine();
+        while(q-- != 0) {
+            String t = sc.nextLine();
+            System.out.println("DANH SACH SINH VIEN LOP " + t +" :");
+            for(int i=0; i<listHs.size(); i++) {
+                if(listHs.get(i).getLop().equals(t)) {
+                    System.out.println(listHs.get(i)) ;
+                }
+            }
+        }
+    }
+}
+class HocSinh {
+    private String maSV;
+    private String hoTen;
+    private String lop;
+    private String email;
+    public HocSinh(String maSV, String hoTen, String lop, String email) {
+        super();
+        this.maSV = maSV;
+        this.hoTen = hoTen;
+        this.lop = lop;
+        this.email = email;
+    }
+    
+    public String getMaSV() {
+        return this.maSV;
+    }
+
+    public void setMaSV(String maSV) {
+        this.maSV = maSV;
+    }
+
+    public String getHoTen() {
+        return this.hoTen;
+    }
+
+    public void setHoTen(String hoTen) {
+        this.hoTen = hoTen;
+    }
+
+    public String getLop() {
+        return lop;
+    }
+
+    public void setLop(String lop) {
+        this.lop = lop;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+    public String chuanHoaTen() {
+        String token[] = hoTen.split("\\s+");
+        String chuanHoa = "";
+        for(String x : token) {
+            chuanHoa += Character.toUpperCase(x.charAt(0));
+            for(int i=1; i<x.length(); i++) {
+                chuanHoa += Character.toLowerCase(x.charAt(i));
+            }
+            chuanHoa += " ";
+        }
+        return chuanHoa.trim();
+    }
+    @Override
+    public String toString() {
+        return maSV + " " + chuanHoaTen() + " " + lop + " " + email;
+    }
+}
+
+Bai30:
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Scanner;
+
+public class Test {
+    public static void main(String[] args) {
+         Scanner sc = new Scanner(System.in);
+         ArrayList<GiangVien> arr = new ArrayList<>();
+            int n = sc.nextInt();
+            sc.nextLine();
+            for(int i=0; i<n; i++) {
+                GiangVien tmp = new GiangVien(i + 1 , sc.nextLine(), sc.nextLine());
+                arr.add(tmp);
+            }
+            Collections.sort(arr, new Comparator<GiangVien>() {
+                @Override
+                public int compare(GiangVien o1, GiangVien o2) {
+                    if(o1.getTen().equals(o2.getTen()) == false) {
+                        return o1.getTen().compareTo(o2.getTen());
+                    }
+                    else {
+                        return o1.getMa().compareTo(o2.getMa());
+                    }
+                }
+            });
+            for(GiangVien x : arr) {
+                System.out.println(x);
+            }
+    }
+}
+class GiangVien {
+    private String maGV;
+    private String hoTen, boMon;
+    public GiangVien(int stt, String hoTen, String boMon) {
+        super();
+        this.maGV = "GV" + String.format("%02d", stt);
+        this.hoTen = hoTen;
+        this.boMon = boMon;
+    }
+    public String getTen() {
+        String token[] = hoTen.split("\\s+");
+        String ten = token[token.length - 1];
+        return ten;
+    }
+    public String getMa() {
+        return maGV;
+    }
+    public String getNganh() {
+        String token[] = boMon.split("\\s+");
+        String tenNganh = "";
+        for(String x : token) {
+            tenNganh += Character.toUpperCase(x.charAt(0));
+        }
+        return tenNganh;
+    }
+    @Override
+    public String toString() {
+        return maGV + " " + hoTen + " " + getNganh();
+    }
+}
+

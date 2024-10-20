@@ -1,0 +1,1684 @@
+Bai1;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Scanner;
+
+public class Bai1 {
+public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    String s = sc.nextLine();
+    int cnt1 = 0, cnt2 = 0, cnt3 = 0;
+    for(int i=0; i<s.length(); i++) {
+        if(Character.isAlphabetic(s.charAt(i))) {
+            ++cnt1;
+        }
+        else if(Character.isDigit(s.charAt(i))) {
+            ++cnt2;
+        }
+        else {
+            ++cnt3;
+        }
+    }
+    System.out.println(cnt1 + " " + cnt2 + " " + cnt3);
+}
+}
+Bai2;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Scanner;
+
+public class Bai1 {
+public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    String s = sc.nextLine();
+    s = s.toUpperCase();
+    System.out.println(s);
+    s= s.toLowerCase();
+    System.out.println(s);
+}
+}
+Bai3:
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Scanner;
+import java.util.Set;
+import java.util.TreeMap;
+
+public class Bai1 {
+public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    int cnt[] = new int[256];
+    String s = sc.nextLine();
+    TreeMap<Character, Integer> map = new TreeMap<>();
+    for(int i=0; i<s.length(); i++) {
+        cnt[s.charAt(i)]++;
+        if(map.containsKey(s.charAt(i))) {
+            map.put(s.charAt(i), map.get(s.charAt(i))+1);
+        }
+        else {
+            map.put(s.charAt(i),1);
+        }
+    }
+    Set<Map.Entry<Character, Integer>> entrySet = map.entrySet();
+    for(Map.Entry<Character, Integer> entry : entrySet) {
+        System.out.println(entry.getKey() + " " + entry.getValue());
+    }
+    System.out.println();
+    for(int i=0; i<s.length(); i++) {
+        if(cnt[s.charAt(i)] != 0) {
+            System.out.println(s.charAt(i) + " " + cnt[s.charAt(i)]);
+            cnt[s.charAt(i)] = 0;
+        }
+    }
+}
+}
+Bai4
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Scanner;
+import java.util.Set;
+import java.util.TreeMap;
+
+public class Bai1 {
+public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    ArrayList<Character> arr = new ArrayList<>(); 
+    String s = sc.nextLine();
+    int cnt[] = new int[1000000];
+    for(int i=0; i<s.length(); i++) {
+        arr.add(s.charAt(i));
+        cnt[arr.get(i)]++;
+    }
+    arr.sort((o1, o2) -> o1 - o2);
+    int res = 0;
+    Character tmp = ' ';
+    Character tmp2 = ' ';
+    int rem = (int)1e9;
+    for(int i=0; i<arr.size(); i++) {
+        if(cnt[arr.get(i)] >= res) {
+            res = cnt[arr.get(i)];
+            tmp = arr.get(i);
+        }
+        if(cnt[arr.get(i)] <= rem) {
+            rem = cnt[arr.get(i)];
+            tmp2 = arr.get(i);
+        }
+    }
+    System.out.println(tmp +" "+ res);
+    System.out.println(tmp2 + " " + rem);
+}
+}
+
+bai5;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Scanner;
+import java.util.Set;
+import java.util.TreeMap;
+import java.util.TreeSet;
+
+public class Bai1 {
+public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    TreeSet<Character> set = new TreeSet<>();
+    TreeMap<Character, Integer> map = new TreeMap<>();
+    String s = sc.nextLine();
+    String t = sc.nextLine();
+    for(int i=0; i<s.length(); i++) {
+        set.add(s.charAt(i));
+        map.put(s.charAt(i), 1);
+    }
+    for(int i=0; i<t.length(); i++) {
+        set.add(t.charAt(i));
+        if(map.containsKey(t.charAt(i))) {
+            map.put(t.charAt(i), 2);
+        }
+    }
+    Set<Map.Entry<Character, Integer>> entrySet = map.entrySet();
+    for(Map.Entry<Character, Integer> entry : entrySet) {
+        if(entry.getValue() == 2) {
+            System.out.print(entry.getKey());
+        }
+    }
+    System.out.println();
+    for(Character x : set) {
+        System.out.print(x);
+    }
+}
+}
+Bai6;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Scanner;
+import java.util.Set;
+import java.util.TreeMap;
+import java.util.TreeSet;
+
+public class Bai1 {
+public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    TreeSet<Character> set = new TreeSet<>();
+    TreeMap<Character, Integer> map = new TreeMap<>();
+    TreeMap<Character, Integer> map2 = new TreeMap<>();
+
+    String s = sc.nextLine();
+    String t = sc.nextLine();
+    for(int i=0; i<s.length(); i++) {
+        set.add(s.charAt(i));
+        map.put(s.charAt(i), 1);
+    }
+    for(int i=0; i<t.length(); i++) {
+        set.add(t.charAt(i));
+        if(map.containsKey(t.charAt(i))) {
+            map.put(t.charAt(i), 2);
+        }
+        if(map.containsKey(t.charAt(i)) == false) {
+            map2.put(t.charAt(i), 1);
+        }
+    }
+    Set<Map.Entry<Character, Integer>> entrySet = map.entrySet();
+    for(Map.Entry<Character, Integer> entry : entrySet) {
+        if(entry.getValue() == 1) {
+            System.out.print(entry.getKey());
+        }
+    }
+    System.out.println();
+    Set<Map.Entry<Character, Integer>> entrySet2 = map2.entrySet();
+    for(Map.Entry<Character, Integer> entry2 : entrySet2) {
+        System.out.print(entry2.getKey());
+    }
+    
+}
+}
+
+Bai7;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Scanner;
+import java.util.Set;
+import java.util.TreeMap;
+import java.util.TreeSet;
+
+public class Bai1 {
+public static boolean check(String x) {
+    String t = x;
+    StringBuilder str = new StringBuilder(x);
+    return t.equals(str.reverse().toString());
+}
+public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    String s = sc.nextLine();
+    if(check(s)) {
+        System.out.println("YES");
+    }
+    else {
+        System.out.println("NO");
+    }
+}
+}
+
+Bai8;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashSet;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Scanner;
+import java.util.Set;
+import java.util.TreeMap;
+import java.util.TreeSet;
+
+public class Bai1 {
+public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    HashSet<Character> set = new HashSet<>();
+    String s = sc.nextLine();
+    s = s.toLowerCase();
+    for(int i=0; i<s.length(); i++) {
+        if(Character.isAlphabetic(s.charAt(i))) {
+            set.add(s.charAt(i));
+        }
+    }
+    if(set.size() == 26) {
+        System.out.println("YES");
+    }
+    else {
+        System.out.println("NO");
+    }
+    
+}
+}
+
+Bai9;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashSet;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Scanner;
+import java.util.Set;
+import java.util.StringTokenizer;
+import java.util.TreeMap;
+import java.util.TreeSet;
+
+public class Bai1 {
+public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    String s = sc.nextLine();
+    String arr[] = s.split("\\s+");
+    System.out.println(arr.length);
+}
+}
+
+
+Bai10;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashSet;
+import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
+import java.util.Map;
+import java.util.Scanner;
+import java.util.Set;
+import java.util.StringTokenizer;
+import java.util.TreeMap;
+import java.util.TreeSet;
+
+public class Bai1 {
+public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    String s = sc.nextLine();
+    LinkedHashSet<String> set = new LinkedHashSet<>();
+    TreeSet<String> set2 = new TreeSet<>();
+    String arr[] = s.split("\\s+");
+    String arr2[] = s.split("\\s+");
+    Arrays.sort(arr);
+    for(String x : arr) {
+        System.out.print(x+" ");
+    }
+    Arrays.sort(arr2, new Comparator<String>() {
+        @Override
+        public int compare(String o1, String o2) {
+            // TODO Auto-generated method stub
+            if(o1.length() != o2.length()) {
+                return o1.length() - o2.length();
+            }
+            return o1.compareTo(o2);
+        }
+    });
+    System.out.println();
+    for(String x : arr2) {
+        System.out.print(x + " ");
+    }
+}
+}
+
+Bai11;
+import java.io.*;
+import java.util.*;
+public class Bai1 {
+public static boolean check(String x) {
+    String t = x;
+    StringBuilder str = new StringBuilder(x);
+    return t.equals(str.reverse().toString());
+}
+public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    String s = sc.nextLine();
+    String arr[] = s.split("\\s+");
+    ArrayList<String> ar = new ArrayList<>();
+    HashSet<String> set = new HashSet<>();
+    for(String x : arr) {
+        if(check(x) && set.contains(x) == false) {
+            ar.add(x);
+            set.add(x);
+        }
+    }
+    Collections.sort(ar, new Comparator<String>() {
+        @Override
+        public int compare(String o1, String o2) {
+            // TODO Auto-generated method stub
+            return o1.length() - o2.length();
+        }
+    });
+    int check = 0;
+    for(String x : ar) {
+        ++check;
+        if(check != ar.size())
+        System.out.print(x + " ");
+        else 
+        System.out.print(x);
+    }
+}
+}
+
+Bai12;
+import java.io.*;
+import java.util.*;
+public class Bai1 {
+public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    String s = sc.nextLine();
+    LinkedHashMap<String, Integer> map = new LinkedHashMap<>();
+    TreeMap<String, Integer> map2 = new TreeMap<>();
+    String arr[] = s.split("\\s+");
+    for(String  x : arr) {
+        if(map.containsKey(x)) {
+            map.put(x, map.get(x) +1);
+        }
+        else {
+            map.put(x, 1);
+        }
+        if(map2.containsKey(x)) {
+            map2.put(x, map2.get(x) + 1);
+        }
+        else {
+            map2.put(x, 1);
+        }
+    }
+    Set<Map.Entry<String, Integer>> entry1 = map.entrySet();
+    Set<Map.Entry<String, Integer>> entry2 = map2.entrySet();
+    for(Map.Entry<String, Integer> entry : entry2) {
+        System.out.println(entry.getKey() + " " + entry.getValue());
+    }
+    System.out.println();
+    for(Map.Entry<String, Integer> entry : entry1) {
+        System.out.println(entry.getKey() + " " + entry.getValue());
+    }
+}
+}
+
+Bai13;
+
+import java.io.*;
+import java.util.*;
+public class Bai1 {
+public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    String s = sc.nextLine();
+    TreeMap<String, Integer> map2 = new TreeMap<>();
+    String arr[] = s.split("\\s+");
+    for(String  x : arr) {
+        if(map2.containsKey(x)) {
+            map2.put(x, map2.get(x) + 1);
+        }
+        else {
+            map2.put(x, 1);
+        }
+    }
+    String x = "";
+    int tmp = 0;
+    String y = "";
+    int rem = (int)1e9;
+    Set<Map.Entry<String, Integer>> entry2 = map2.entrySet();
+    for(Map.Entry<String, Integer> entry : entry2) {
+        if( entry.getValue() >= tmp) {
+            tmp = entry.getValue();
+            x = entry.getKey();
+        }
+        if(entry.getValue() <= rem) {
+            rem = entry.getValue();
+            y = entry.getKey();
+        }
+    }
+    System.out.println(x + " " + tmp +"\n" + y + " " + rem);
+    
+}
+}
+
+Bai14;
+import java.io.*;
+import java.util.*;
+public class Bai1 {
+public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    String s = sc.nextLine();
+    String t = sc.nextLine();
+    if(s.contains(t) == true) {
+        System.out.println("YES");
+    }
+    else {
+        System.out.println("NO");
+    }
+}
+}
+
+Bai15;
+import java.io.*;
+import java.util.*;
+public class Bai1 {
+public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    String s = sc.nextLine();
+    String date = sc.nextLine();
+    String arr[] = s.split("\\s+");
+    for(String x : arr) {
+        String t = "";
+        for(int i=0; i<x.length(); i++) {
+            if(i == 0) {
+                 if(Character.isUpperCase(x.charAt(i)) == false) 
+                 t += Character.toUpperCase(x.charAt(i));
+                 else 
+                 t += x.charAt(i);
+            }
+            else {
+                t +=Character.toLowerCase(x.charAt(i));
+            }
+        }
+        System.out.print(t + " ");
+    }
+    System.out.println();
+    String chuanHoa = "";
+    if(date.charAt(1) == '/') {
+        date = "0" + date;
+    }
+    for(int i = 0; i<date.length(); i++) {
+        if(i == 3 && date.charAt(4) == '/') {
+            chuanHoa = chuanHoa + "0" + date.charAt(i);
+        }
+        else {
+            chuanHoa += date.charAt(i);
+        }
+    }
+    System.out.println(chuanHoa);
+}
+}
+
+Bai16;
+import java.io.*;
+import java.util.*;
+public class Bai1 {
+public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    ArrayList<String> arr = new ArrayList<>();
+    String s = sc.nextLine();
+    String a[] = s.split("\\s+");
+    for(String x : a) {
+        String t = "";
+        for(int i=0; i<x.length(); i++) {
+            if(i == 0) {
+                t += Character.toUpperCase(x.charAt(i));
+            }
+            else {
+                t += Character.toLowerCase(x.charAt(i));
+            }
+        }
+        arr.add(t);
+    }
+    String j = "";
+    for(int i=0; i<arr.size(); i++) {
+        if(i == arr.size() - 2) {
+            System.out.print(arr.get(i) + ", ");
+        }
+        else if(i == arr.size() - 1) {
+            System.out.print(arr.get(i).toUpperCase());
+            j = arr.get(i).toUpperCase();
+        }
+        else {
+            System.out.print(arr.get(i) + " ");
+        }
+    }
+    System.out.println();
+    System.out.print(j +", ");
+    for(int i=0; i<arr.size() - 1; i++) {
+        System.out.print(arr.get(i) + " ");
+    }
+}
+}
+
+Bai17;
+
+import java.io.*;
+import java.util.*;
+public class Bai1 {
+public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    int n = sc.nextInt();
+    sc.nextLine();
+    for(int q=1; q<=n; q++) {
+        ArrayList<String> arr = new ArrayList<>();
+        String email = "";
+        String pass = "";
+        String s = sc.nextLine();
+        s = s.toLowerCase();
+        String token[] = s.split("\\s+");
+        for(String x : token) {
+            arr.add(x);
+        }
+        email += arr.get(arr.size() - 2);
+        for(int i=0; i<arr.size()-2; i++) {
+            email += arr.get(i).charAt(0);
+        }
+        email += "@xyz.edu.vn";
+        System.out.println(email);
+        for(int i=0; i<arr.get(arr.size() - 1).length(); i++) {
+            if(i<=5) {
+                if(arr.get(arr.size() - 1).charAt(i) != '0' && arr.get(arr.size() - 1).charAt(i) != '/') {
+                    pass += arr.get(arr.size() - 1).charAt(i);
+                }
+                else if(i == 1 && arr.get(arr.size() - 1).charAt(i) == '0') {
+                    pass += arr.get(arr.size() - 1).charAt(i);
+                }
+                else if(i == 4 && arr.get(arr.size() - 1).charAt(i) == '0') {
+                    pass += arr.get(arr.size() - 1).charAt(i);
+                }
+            }
+            else {
+                pass += arr.get(arr.size() - 1).charAt(i);
+            }
+        }
+        System.out.println(pass);
+    }
+}
+}
+
+Bai18;
+import java.io.*;
+import java.util.*;
+public class Bai1 {
+public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    int cnt[] = new int[1000000];
+    HashMap<String, Integer> map = new HashMap<>();
+    int n = sc.nextInt();
+    sc.nextLine();
+    for(int q=1; q<=n; q++) {
+        ArrayList<String> arr = new ArrayList<>();
+        String email = "";
+        String pass = "";
+        String s = sc.nextLine();
+        s = s.toLowerCase();
+        String token[] = s.split("\\s+");
+        for(String x : token) {
+            arr.add(x);
+        }
+        email += arr.get(arr.size() - 2);
+        for(int i=0; i<arr.size()-2; i++) {
+            email += arr.get(i).charAt(0);
+        }
+        if(map.containsKey(email)) {
+            map.put(email,map.get(email) +1 );
+        }
+        else {
+            map.put(email, 1);
+        }
+        if(map.get(email) > 1){
+            email += "" + map.get(email);
+        }
+        email += "@xyz.edu.vn";
+        System.out.println(email);
+        for(int i=0; i<arr.get(arr.size() - 1).length(); i++) {
+             if(i<=5) {
+                if(arr.get(arr.size() - 1).charAt(i) != '0' && arr.get(arr.size() - 1).charAt(i) != '/') {
+                    pass += arr.get(arr.size() - 1).charAt(i);
+                }
+                else if(i == 1 && arr.get(arr.size() - 1).charAt(i) == '0') {
+                     pass += arr.get(arr.size() - 1).charAt(i);
+                }
+                else if(i == 4 && arr.get(arr.size() - 1).charAt(i) == '0') {
+                     pass += arr.get(arr.size() - 1).charAt(i);
+                }
+             }
+             else {
+                pass += arr.get(arr.size() - 1).charAt(i);
+             }
+        }
+        System.out.println(pass);
+    }
+
+}
+}
+
+Bai19;
+import java.io.*;
+import java.util.*;
+public class Bai1 {
+public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    LinkedHashSet<Character> set = new LinkedHashSet<>();
+    String s = sc.nextLine();
+    String t = "python";
+    int n = 0;
+    int cnt = 0;
+    for(int i=0; i<s.length(); i++) {
+        if((int)s.charAt(i) == (int)t.charAt(n)) {
+            ++cnt; ++n;
+        }
+        if(cnt == 6) {
+            System.out.println("YES");
+            return;
+        }
+        
+    }
+    System.out.println("NO");
+}
+}
+
+Bai20;
+import java.io.*;
+import java.util.*;
+public class Bai1 {
+public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    TreeMap<String, Integer> map = new TreeMap<>();
+    String s = sc.nextLine();
+    s = s.toLowerCase();
+    String t = sc.nextLine();
+    t = t.toLowerCase();
+    String a[] = s.split("\\s+");
+    String b[] = t.split("\\s+");
+    for(String x : a) {
+        map .put(x, 1);
+    }
+    for(String x : b) {
+        if(map.containsKey(x)) {
+            map.put(x, 2);
+        }
+    }
+    Set<Map.Entry<String, Integer>> entry = map.entrySet();
+    for(Map.Entry<String, Integer> e : entry) {
+        if(e.getValue() == 2) {
+            System.out.print(e.getKey() + " ");
+        }
+    }
+}
+}
+
+
+Bai21;
+import java.io.*;
+import java.util.*;
+public class Bai1 {
+public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    TreeMap<String, Integer> map = new TreeMap<>();
+    String s = sc.nextLine();
+    s = s.toLowerCase();
+    String t = sc.nextLine();
+    t = t.toLowerCase();
+    String a[] = s.split("\\s+");
+    String b[] = t.split("\\s+");
+    for(String x : a) {
+        map .put(x, 1);
+    }
+    for(String x : b) {
+        if(map.containsKey(x)) {
+            map.put(x, 2);
+        }
+    }
+    Set<Map.Entry<String, Integer>> entry = map.entrySet();
+    for(Map.Entry<String, Integer> e : entry) {
+        if(e.getValue() == 1) {
+            System.out.print(e.getKey() + " ");
+        }
+    }
+}
+}
+
+Bai22;
+import java.io.*;
+import java.util.*;
+public class Bai1 {
+public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    TreeMap<String, Integer> map = new TreeMap<>();
+    String s = sc.nextLine();
+    s = s.toLowerCase();
+    String t = sc.nextLine();
+    t = t.toLowerCase();
+    String a[] = s.split("\\s+");
+    String b[] = t.split("\\s+");
+    for(String x : a) {
+        map .put(x, 1);
+    }
+    for(String x : b) {
+        if(map.containsKey(x)) {
+            map.put(x, 2);
+        }
+    }
+    Set<Map.Entry<String, Integer>> entry = map.entrySet();
+    for(Map.Entry<String, Integer> e : entry) {
+        if(e.getValue() == 1) {
+            System.out.print(e.getKey() + " ");
+        }
+    }
+}
+}
+
+Bai23;
+import java.io.*;
+import java.util.*;
+
+public class Bai1 {
+public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    int n = sc.nextInt();
+    ArrayList<String> arr = new ArrayList<>();
+    sc.nextLine();
+    for(int i=0; i<n; i++) {
+        String s = sc.next();
+        arr.add(s);
+    }
+    Collections.sort(arr, new Comparator<String>() {
+        @Override
+        public int compare(String o1, String o2) {
+            // TODO Auto-generated method stub
+            return (o2+ o1).compareTo(o1 + o2);
+        }
+    });
+    for(String x : arr) {
+        System.out.print(x);
+    }
+}
+}
+Bai24;
+import java.io.*;
+import java.util.*;
+public class Bai1 {
+public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    String s = sc.nextLine();
+    HashMap<Character, Integer> map = new HashMap<>();
+    long cnt = s.length();
+    for(int i=0; i<s.length(); i++) {
+        if(map.containsKey(s.charAt(i))) {
+            map.put(s.charAt(i), map.get(s.charAt(i)) + 1);
+        }
+        else {
+            map.put(s.charAt(i), 1);
+        }
+    }
+    Set<Map.Entry<Character, Integer>> entry = map.entrySet();
+    for(Map.Entry<Character, Integer> e : entry) {
+        if(e.getValue() >= 2) {
+            cnt += (long)e.getValue()*(e.getValue() - 1)/2;
+        }
+    }
+    System.out.println(cnt);
+}
+}
+
+Bai25;
+import java.io.*;
+import java.util.*;
+public class Bai1 {
+public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    String s = sc.nextLine();
+    ArrayList<String> arr = new ArrayList<>();
+    String t = "";
+    int cnt = 0;
+    for(int i=0; i<s.length() - 1; i++) {
+        if(s.charAt(i) == s.charAt(i+1)) {
+            ++cnt;
+            t += s.charAt(i);
+        }
+        else {
+            if(cnt > 0) {
+                t += s.charAt(i - 1);
+            }
+            else {
+                t += s.charAt(i);
+            }
+            arr.add(t);
+            t = "";
+            cnt = 0;
+        }
+    }
+    if(cnt > 0) {
+        arr.add(t + s.charAt(s.length() -1));
+    }
+    else {
+        t += s.charAt(s.length()-1);
+        arr.add(t);
+    }
+    Collections.sort(arr, new Comparator<String>() {
+        @Override
+        public int compare(String o1, String o2) {
+            // TODO Auto-generated method stub
+            if(o1.length() != o2.length()) {
+                return o2.length() - o1.length();
+            }
+            return o2.compareTo(o1);
+        }
+    });
+    System.out.println(arr.get(0));
+}
+}
+
+Bai26;
+import java.io.*;
+import java.lang.reflect.Array;
+import java.util.*;
+
+public class Bai1 {
+public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    String s = sc.nextLine();
+    ArrayList<String> arr = new ArrayList<>();
+    String t = "";
+    int cnt = 0;
+    for(int i=0; i<s.length()-1; i++) {
+        if(s.charAt(i) != s.charAt(i + 1)) {
+            t += s.charAt(i);
+            ++cnt;
+        }
+        else {
+            if(cnt != 0) {
+                t += s.charAt(i);
+            }
+            if(t != "") {
+                arr.add(t);
+            }
+            cnt = 0;
+            t = "";
+        }
+    }
+    if(cnt != 0) {
+        arr.add(t + s.charAt(s.length() - 1));
+    }
+    if(arr.isEmpty()) {
+        System.out.println(s.charAt(0));
+        return;
+    }
+    Collections.sort(arr, new Comparator<String>() {
+        @Override
+        public int compare(String o1, String o2) {
+            // TODO Auto-generated method stub
+            if(o1.length() != o2.length()) {
+                return o2.length() - o1.length();
+            }
+            return o2.compareTo(o1);
+        }
+    });
+    System.out.println(arr.get(0));
+}
+}
+
+Bai27;
+import java.io.*;
+import java.util.*;
+
+public class Bai1 {
+public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    ArrayList<String> arr = new ArrayList<>();
+    String s = sc.next();
+    String t = "";
+    for(int i=0; i<s.length(); i++) {
+        if(Character.isDigit(s.charAt(i)) == false) {
+            t += " ";
+        }
+        else {
+            t += s.charAt(i);
+        }
+    }
+    String token[] = t.split("\\s+");
+    for(String  x : token) {
+        int cnt = 0;
+        for(int i=0; i<x.length(); i++) {
+            if(x.charAt(i) == '0') {
+                ++cnt;
+            }
+            else {
+                break;
+            }
+        }
+        if(cnt == x.length() && x.length()!= 0 && arr.contains("0") == false) {
+            arr.add("0");
+        }
+        else {
+            if(cnt == 0) arr.add(x);
+            else arr.add(x.substring(cnt));
+        }
+    }
+    Collections.sort(arr, new Comparator<String>() {
+        @Override
+        public int compare(String o1, String o2) {
+            // TODO Auto-generated method stub
+            if(o1.length() != o2.length()) {
+                return o2.length() - o1.length();
+            }
+            return o2.compareTo(o1);
+        }
+    });
+    System.out.println(arr.get(0));
+}
+}
+
+Bai28;
+import java.util.*;
+import java.io.*;
+
+public class Account{
+public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    String s = sc.nextLine();
+    String t = "";
+    for(int i=0; i<s.length(); i++) {
+        if(Character.isDigit(s.charAt(i))) {
+            t += s.charAt(i);
+        }
+        else {
+            t += " ";
+        }
+    }
+    String a[] = t.split("\\s+");
+    long tong = 0;
+    for(String x : a) {
+        if(x.length() != 0){
+            tong += Long.parseLong(x);
+        }
+    }
+    System.out.println(tong);
+}
+}
+
+Bai29;
+import java.util.*;
+import java.io.*;
+
+public class Account{
+public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    String s = sc.nextLine();
+    String t = "";
+    for(int i=0; i<s.length(); i++) {
+        if(Character.isDigit(s.charAt(i))) {
+            t += s.charAt(i);
+        }
+        else {
+            t += " ";
+        }
+    }
+    String a[] = t.split("\\s+");
+    ArrayList<String> arr = new ArrayList<>();
+    for(String x : a) {
+        if(x.length() != 0) {
+            int cnt = 0;
+            for(int i=0; i<x.length(); i++) {
+                if(x.charAt(i) == '0') {
+                    ++cnt;
+                }
+                else {
+                    break;
+                }
+            }
+            if(cnt == 0) {
+                arr.add(x);
+            }
+            else {
+                if(cnt == x.length()) {
+                    arr.add("0");
+                }
+                else {
+                    arr.add(x.substring(cnt));
+                }
+            }
+        }
+    }
+    Collections.sort(arr, new Comparator<String>() {
+        @Override
+        public int compare(String o1, String o2) {
+            // TODO Auto-generated method stub
+            return (o2 + o1).compareTo(o1 + o2);
+        }
+    });
+    for(String x : arr) {
+        System.out.print(x);
+    }
+}
+}
+
+Bai30;
+import java.io.*;
+import java.util.*;
+
+public class Bai1 {
+public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    String s = sc.nextLine();
+    long sum = 0;
+    for(int i=0; i<s.length(); i++) {
+        sum += s.charAt(i) - '0';
+    }
+    System.out.println(sum);
+}
+}
+
+Bai31
+import java.io.*;
+import java.util.*;
+
+public class Bai1 {
+public static boolean check(long x) {
+    for(int i=2; i<=Math.sqrt(x); i++) {
+        if(x % i == 0) {
+            return false;
+        }
+    }
+    return x > 1;
+}
+public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    String s = sc.nextLine();
+    long sum = 0;
+    for(int i=0; i<s.length(); i++) {
+        if(s.charAt(i) != '2' && s.charAt(i) != '3' && s.charAt(i) != '5' && s.charAt(i) != '7') {
+            System.out.println("NO");
+            return;
+        }
+        else {
+            sum += s.charAt(i) - '0';
+        }
+    }
+    if(check(sum)) {
+        System.out.println("YES");
+    }
+    else {
+        System.out.println("NO");
+    }
+}
+}
+
+Bai32
+import java.io.*;
+import java.util.*;
+
+public class Bai1 {
+public static boolean check(String x) {
+    String t = x;
+    StringBuilder str = new StringBuilder(x);
+     x = str.reverse().toString();
+    return t.equals(x);
+}
+public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    String s = sc.nextLine();
+    int tmp = 0;
+    for(int i=0; i<s.length(); i++) {
+        if(s.charAt(i) == '6') {
+            tmp = 1;
+            break;
+        }
+    }
+    if(tmp ==1 && check(s)) {
+        System.out.println("YES");
+    }
+    else {
+        System.out.println("NO");
+    }
+    
+}
+}
+
+bai33;
+import java.util.*;
+
+public class Bai1 {
+public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    String s = sc.nextLine();
+    int cnt = 0;
+    for(int i=0; i<s.length()-1; i++) {
+        if(s.charAt(i) >= s.charAt(i+1)) {
+            ++cnt;
+        }
+    }
+    if(cnt == s.length() - 1) {
+        System.out.println("YES");
+    }
+    else {
+        cnt = 0;
+        for(int i=0; i<s.length()-1; i++) {
+            if(s.charAt(i) <= s.charAt(i+1)) {
+                ++cnt;
+            }
+        }
+        if(cnt == s.length() - 1){
+            System.out.println("YES");
+        }
+        else {
+            System.out.println("NO");
+        }
+    }
+}
+} 
+
+Bai34;
+import java.util.*;
+import java.io.*;
+
+public class Account{
+public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    String s = sc.nextLine();
+    if((s.charAt(s.length()-1) - '0') % 2 != 0) {
+        System.out.println("NO");
+    }
+    else {
+        int t = 0;
+        for(int i=0; i<s.length(); i++) {
+            t += (s.charAt(i) - '0');
+        }
+        if(t % 3 == 0) {
+            System.out.println("YES");
+        }
+        else {
+            System.out.println("NO");
+        }
+    }
+}
+}
+
+Bai35;
+import java.util.*;
+import java.io.*;
+
+public class Account{
+public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    String s = sc.nextLine();
+    if((s.length() == 1) && (s.charAt(0) == '0' || s.charAt(0) == '4' || s.charAt(0) == '8')) {
+        System.out.println("YES");
+    }
+    else if (s.length() > 1) {
+        int check = (s.charAt((s.length() - 2)) - '0') * 10 + s.charAt(s.length()-1);
+        if(check % 4 == 0){
+            System.out.println("YES");
+        }
+        else System.out.println("NO");
+    }
+    else {
+        System.out.println("NO");
+    }
+}
+}
+
+Bai36;
+import java.util.*;
+import java.io.*;
+
+public class Account{
+public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    String s = sc.nextLine();
+    if(s.charAt(s.length()-1) == '0' || s.charAt(s.length()-1) == '5'){
+        if(s.length() == 1 && s.charAt(0) == '0') {
+            System.out.println("YES");
+        }
+        else if (s.length() > 1) {
+            int check = 0;
+            for(int i=0; i<s.length(); i++) {
+                check += (s.charAt(i) - '0');
+            }
+            if(check % 3 == 0) {
+                System.out.println("YES");
+            }
+            else {
+                System.out.println("NO");
+            }
+        }
+        else {
+            System.out.println("NO");
+        }
+    }
+    else {
+        System.out.println("NO");
+    }
+}
+}
+
+Bai37;
+
+import java.util.*;
+import java.io.*;
+
+public class Account{
+public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    String s = sc.nextLine();
+    if(s.length() <=1) {
+        if(s.charAt(0) == '0') 
+            System.out.println("YES");
+        else 
+            System.out.println("NO");
+    }
+    else {
+        int check = (s.charAt(s.length()-2) - '0')*10 + (s.charAt(s.length()-1) - '0');
+        if(check % 25 == 0) {
+            System.out.println("YES");
+        }
+        else {
+            System.out.println("NO");
+        }
+    }
+}
+}
+
+Bai38;
+import java.util.*;
+import java.io.*;
+
+public class Account{
+public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    String s = sc.nextLine();
+    int tong1 = 0;
+    int tong2 = 0;
+    for(int i=0; i<s.length(); i++) {
+        if(i % 2 == 0) {
+            tong1 += (s.charAt(i) - '0');
+        }
+        else {
+            tong2 += (s.charAt(i) - '0');
+        }
+    }
+    if(Math.abs(tong1 - tong2) % 11 == 0) {
+        System.out.println("YES");
+    }
+    else {
+        System.out.println("NO");
+    }
+}
+}
+
+Bai39;
+import java.util.*;
+import java.io.*;
+
+public class BaiTap {
+public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    String s = sc.nextLine();
+    long check = 0;
+    long tmp = 1;
+    for(int i=s.length()-1; i>=0; i--) {
+        check += (s.charAt(i) - '0')*tmp;
+        tmp *=2;
+        tmp %= 10;
+        check %= 10;
+    }
+    if(check % 5 == 0) {
+        System.out.println("YES");
+    }
+    else {
+        System.out.println("NO");
+    }
+}
+}
+
+Bai40;
+import java.util.*;
+import java.io.*;
+
+public class BaiTap {
+public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    String s = sc.nextLine();
+    int k = sc.nextInt();
+    long x = 1;
+    int MOD = (int)1e9 + 7;
+    for(int i=1; i<=k; i++) {
+        x = x*2;
+        x%=MOD;
+    }
+    long check = 0;
+    long tmp = 1;
+    for(int i=s.length()-1; i>=0; i--) {
+        check += ((long)s.charAt(i) - '0')*tmp;
+        tmp *=2;
+        tmp %= x;
+        check %= x;
+    }
+    if(check % x == 0) {
+        System.out.println("YES");
+    }
+    else {
+        System.out.println("NO");
+    }
+}
+}
+
+Bai41;
+import java.util.*;
+import java.io.*;
+
+public class BaiTap {
+public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    String s = sc.nextLine();
+    long t = sc.nextLong();
+    long r = 0;
+    for(int i=0; i<s.length(); i++) {
+        if(s.charAt(i) == '1') {
+            r = r*10 + 1;
+            r %= t;
+        }
+        else if(s.charAt(i) == '2') {
+            r = r*10 + 2;
+            r %= t;
+        }
+        else if(s.charAt(i) == '3') {
+            r = r*10 + 3;
+            r %= t;
+        }
+        else if(s.charAt(i) == '4') {
+            r = r*10 + 4;
+            r %= t;
+        }
+        else if(s.charAt(i) == '5') {
+            r = r*10 + 5;
+            r %= t;
+        }
+        else if(s.charAt(i) == '6') {
+            r = r*10 + 6;
+            r %= t;
+        }
+        else if(s.charAt(i) == '7') {
+            r = r*10 + 7;
+            r %= t;
+        }
+        else if(s.charAt(i) == '8') {
+            r = r*10 + 8;
+            r %= t;
+        }
+        else if(s.charAt(i) == '9') {
+            r = r*10 + 9;
+            r %= t;
+        }
+        else {
+            r = r*10 + 0;
+            r %= t;
+        }
+    }
+    System.out.println(r);
+}
+}
+
+Bai42;
+import java.util.*;
+import java.io.*;
+
+public class BaiTap {
+public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    String s = sc.nextLine();
+    long t = sc.nextLong();
+    long r = 0;
+    for(int i=0; i<s.length(); i++) {
+        if(s.charAt(i) == '1') {
+            r = r*10 + 1;
+            r %= t;
+        }
+        else if(s.charAt(i) == '2') {
+            r = r*10 + 2;
+            r %= t;
+        }
+        else if(s.charAt(i) == '3') {
+            r = r*10 + 3;
+            r %= t;
+        }
+        else if(s.charAt(i) == '4') {
+            r = r*10 + 4;
+            r %= t;
+        }
+        else if(s.charAt(i) == '5') {
+            r = r*10 + 5;
+            r %= t;
+        }
+        else if(s.charAt(i) == '6') {
+            r = r*10 + 6;
+            r %= t;
+        }
+        else if(s.charAt(i) == '7') {
+            r = r*10 + 7;
+            r %= t;
+        }
+        else if(s.charAt(i) == '8') {
+            r = r*10 + 8;
+            r %= t;
+        }
+        else if(s.charAt(i) == '9') {
+            r = r*10 + 9;
+            r %= t;
+        }
+        else {
+            r = r*10 + 0;
+            r %= t;
+        }
+    }
+    while(t != 0) {
+        long x = r % t;
+        r = t;
+        t = x;
+    }
+    System.out.println(r);
+}
+}
+
+Bai43;
+import java.util.*;
+import java.io.*;
+
+public class BaiTap {
+public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    String s = sc.nextLine();
+    long t = sc.nextLong();
+    long r = 0;
+    int MOD = (int)1e9+7;
+    for(int i=0; i<s.length(); i++) {
+        if(s.charAt(i) == '1') {
+            r = r*10 + 1;
+            r %= MOD;
+        }
+        else if(s.charAt(i) == '2') {
+            r = r*10 + 2;
+            r %= MOD;
+        }
+        else if(s.charAt(i) == '3') {
+            r = r*10 + 3;
+            r %= MOD;
+        }
+        else if(s.charAt(i) == '4') {
+            r = r*10 + 4;
+            r %= MOD;
+        }
+        else if(s.charAt(i) == '5') {
+            r = r*10 + 5;
+            r %= MOD;
+        }
+        else if(s.charAt(i) == '6') {
+            r = r*10 + 6;
+            r %= MOD;
+        }
+        else if(s.charAt(i) == '7') {
+            r = r*10 + 7;
+            r %= MOD;
+        }
+        else if(s.charAt(i) == '8') {
+            r = r*10 + 8;
+            r %= MOD;
+        }
+        else if(s.charAt(i) == '9') {
+            r = r*10 + 9;
+            r %= MOD;
+        }
+        else {
+            r = r*10 + 0;
+            r %= MOD;
+        }
+    }
+    long res =1;//r %= MOD
+    while(t != 0) {
+        if(t % 2 != 0) {
+            res *= r;
+            res %= MOD;
+        }
+        r *= r;
+        r %= MOD;
+        t /= 2;
+    }
+    System.out.println(res);
+}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
